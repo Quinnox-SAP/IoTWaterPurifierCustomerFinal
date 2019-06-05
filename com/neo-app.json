@@ -1,0 +1,134 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/IOTAS-ADVANCEDLIST-THING-ODATA",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS-ADVANCEDLIST-THING-ODATA"
+      },
+      "description": "IOTAS-ADVANCEDLIST-THING-ODATA"
+    },
+    {
+      "path": "/IOTAS-DETAILS-THING-ODATA",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS-DETAILS-THING-ODATA"
+      },
+      "description": "IOTAS-DETAILS-THING-ODATA"
+    },
+    {
+      "path": "/IOTAS-COMPOSITE-EVENTS-ODATA",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS-COMPOSITE-EVENTS-ODATA"
+      },
+      "description": "IOTAS-COMPOSITE-EVENTS-ODATA"
+    },
+    {
+      "path": "/resources/sap/ui/iot",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS_CONTROLS"
+      },
+      "description": "IoT UI Controls library"
+    },
+    {
+      "path": "/test-resources/sap/ui/iot",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS_CONTROLS"
+      },
+      "description": "Destination for fetching api.json"
+    },
+    {
+      "path": "/backend/",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/backend-image/",
+      "target": {
+        "type": "destination",
+        "name": "IOTAS-FILEIMAGE"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources/sap/smartbusiness/ui",
+      "target": {
+        "type": "destination",
+        "name": "ssbruntime_cf"
+      },
+      "description": "Backend OData services"
+    },
+    {
+      "path": "/destinations/ssbruntime/",
+      "target": {
+        "type": "destination",
+        "name": "ssbruntime"
+      },
+      "description": "Destination for smartbusiness runtime UI application"
+    },
+    {
+      "path": "/destinations/ssbservice",
+      "target": {
+        "type": "destination",
+        "name": "ssbservice"
+      },
+      "description": "ssbservice"
+    },
+    {
+      "path": "/destinations/BusinessSystem00",
+      "target": {
+        "type": "destination",
+        "name": "BusinessSystem00"
+      },
+      "description": "Backend OData services for test and demo"
+    },
+    {
+      "path": "/destinations/BusinessSystem01",
+      "target": {
+        "type": "destination",
+        "name": "BusinessSystem01"
+      },
+      "description": "Backend OData services"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.60.13"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.60.13"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "IotWaterPurifier"
+      },
+      "description": "IotWaterPurifier"
+    }
+  ],
+  "headerWhiteList": [
+    "sap-iot-thingtype",
+    "sap-iot-eventtype",
+    "sap-iot-pst"
+  ]
+}

@@ -1,0 +1,208 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "com",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"EventService": {
+				"uri": "/IOTAS-COMPOSITE-EVENTS-ODATA/CompositeEvents/EventType/v1/com.sap.appiot.eventtypes:StandardEventType",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/EventsMetadata/metadata.xml"
+				}
+			},
+			"mainService": {
+				"uri": "/IOTAS-ADVANCEDLIST-THING-ODATA/CompositeThings/v1/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"Thing_Service1": {
+				"uri": "/IOTAS-DETAILS-THING-ODATA/CompositeThings/ThingType/v1/iot.quinnoxiotcf.iot.new.package:IoT_ThingType",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/Thing_Metadata1/metadata.xml"
+				}
+			},
+			"ZQNX_IOT_SRV": {
+				"uri": "/IotWaterPurifier/sap/opu/odata/sap/ZQNX_IOT_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZQNX_IOT_SRV/metadata.xml"
+				}
+			}
+		},
+		"title": "{{appTitle}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "com.view.Main",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ui.vbm": {},
+				"sap.ui.iot": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.i18n.i18n"
+				}
+			},
+			"events": {
+				"dataSource": "EventService",
+				"preload": true,
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZQNX_IOT_SRV",
+				"preload": true
+			},
+			"thingModel1": {
+				"dataSource": "Thing_Service1",
+				"preload": true,
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl"
+			},
+			"routes": [
+				{
+					"name": "RootView",
+					"pattern": "",
+					"target": [
+						"Main"
+					]
+				},
+				{
+					"name": "Tile",
+					"pattern": "Tile/{deviceId}/{FaultCode}/{filterLife}/{waterConsumption}/{waterFiltered}/{mobileNum}/{filterType}",
+					"target": "Tile"
+				},
+				{
+					"name": "TDSOutput",
+					"pattern": "TDSOutput/:navFrom:/:headerTitle:/:subHeaderTitle:/:mpPath:",
+					"target": "TDSOutput"
+				},
+				{
+				"name": "FilterLife",
+				"pattern": "FilterLife/{FilterConsumed}/{filterType}/{waterFiltered}",
+				"target": "FilterLife"
+			}, {
+				"name": "ServiceHistory",
+				"pattern": "ServiceHistory/{customerID}/{deviceId}",
+				"target": "ServiceHistory"
+			},
+			 {
+				"name": "ServiceRequestCreation",
+				"pattern": "ServiceRequestCreation/{customerID}/{deviceId}",
+				"target": "ServiceRequestCreation"
+			}
+			],
+			"targets": {
+				"Main": {
+					"viewType": "XML",
+					"viewName": "Main"
+				},
+				"Tile": {
+					"viewType": "XML",
+					"viewName": "Tile"
+				},
+				"TDSOutput": {
+					"viewType": "XML",
+					"viewName": "TDSOutput"
+				},
+				"FilterLife": {
+					"viewType": "XML",
+					"viewName": "FilterLife"
+				},
+				"ServiceHistory": {
+					"viewType": "XML",
+					"viewName": "ServiceHistory"
+				},
+				"ServiceRequestCreation": {
+					"viewType": "XML",
+					"viewName": "ServiceRequestCreation"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.2.0"
+	}
+}

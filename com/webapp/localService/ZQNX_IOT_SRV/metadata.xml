@@ -1,0 +1,85 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZQNX_IOT_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="ServiceRequest" sap:content-version="1">
+				<Key><PropertyRef Name="CustomerID"/><PropertyRef Name="ServiceNumber"/></Key><Property Name="Issue" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DeviceName" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Device Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FaultCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="FaultCode" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Comment" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Comment" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DateOfCreation" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Date of Creatiion"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ServiceNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Service History"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="TechnicianMaster" sap:content-version="1">
+				<Key><PropertyRef Name="TechnicianNo"/><PropertyRef Name="CustName"/></Key><Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Partner" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReqType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TechnicianNo" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="System ID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NotiNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Notification"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TechnicianId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Partner"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TechnicianName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TechnicianEmail" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="Long ID/Number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CustName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="UTOMER NAME"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CustId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Address" Type="Edm.String" Nullable="false" MaxLength="300" sap:unicode="false" sap:label="Character 300"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CompletedOn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="completedon"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="RaisedOn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="RaisedOn" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DeviceName" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Device Name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FaultCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="FaultCode" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NotiDesc" Type="Edm.String" Nullable="false" MaxLength="300" sap:unicode="false" sap:label="Character 300"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Customer" sap:content-version="1">
+				<Key><PropertyRef Name="Telephone"/></Key><Property Name="ValidPhoneNo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="ValidPhoneNo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name2" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name3" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 3" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name4" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name 4" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Email" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Telephone" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Telephone 1"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Street" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Region" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="City" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Country" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PostlCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CreatedBy" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedOn" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CreatedOn" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ServiceDueDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ServiceDueDate"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ServiceHistory" sap:content-version="1">
+				<Key><PropertyRef Name="CustomerID"/><PropertyRef Name="ServiceNumber"/></Key><Property Name="DateOfService" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ServiceDueDate"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ServiceDueDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ServiceDueDate"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Feedback" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Feedaback" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DateOfCreation" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Date of Creatiion"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ServiceNumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Service History"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FaultCode" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="FaultCode" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FaultCodeDesc" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="FaultCodeDesc"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="TechnicianValidation" sap:content-version="1">
+				<Key><PropertyRef Name="Message"/></Key><Property Name="OpenRequest" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="OpenRequest" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ClosedRequest" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="ClosedRequest" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TechnicianId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Partner"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TechnicianName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Message" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="TechnicianNotifComplete" sap:content-version="1">
+				<Key><PropertyRef Name="ServiiceRequestNo"/><PropertyRef Name="CauseCode"/><PropertyRef Name="Remarks"/></Key><Property Name="ServiiceRequestNo" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="ServiceRequestNo"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CauseCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="CauseCode" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Remarks" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Remarks" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Message" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZQNX_IOT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ServiceRequestSet" EntityType="ZQNX_IOT_SRV.ServiceRequest" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="TechnicianMasterSet" EntityType="ZQNX_IOT_SRV.TechnicianMaster" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="CustomerSet" EntityType="ZQNX_IOT_SRV.Customer" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="ServiceHistorySet" EntityType="ZQNX_IOT_SRV.ServiceHistory" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="TechnicianValidationSet" EntityType="ZQNX_IOT_SRV.TechnicianValidation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="TechnicianNotifCompleteSet" EntityType="ZQNX_IOT_SRV.TechnicianNotifComplete" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<FunctionImport Name="TechnicianNo" ReturnType="ZQNX_IOT_SRV.TechnicianValidation" EntitySet="TechnicianValidationSet" m:HttpMethod="GET"
+					sap:action-for="ZQNX_IOT_SRV.TechnicianValidation"><Parameter Name="MobileNo" Type="Edm.String" Mode="In" MaxLength="10"/></FunctionImport>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZQNX_IOT_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZQNX_IOT_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

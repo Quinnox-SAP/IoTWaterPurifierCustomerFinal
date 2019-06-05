@@ -1,0 +1,26 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.controller.FilterLife"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>FilterTitle}" showNavButton="true" navButtonPress="onNavBack">
+				<!--<Toolbar>-->
+				<!--	<SearchField></SearchField>-->
+				<!--</Toolbar>-->
+				<List mode="SingleSelectMaster">
+					<items>
+						<!--<ObjectListItem intro="{i18n>FilterType}"  id="id1" number="65" numberUnit="%">-->
+						<ObjectListItem id="idList" title="FilterType" number="" numberUnit="%">
+							<attributes>
+								<ObjectAttribute text="{i18n>FilterType}" id="id1"></ObjectAttribute>
+								<ObjectAttribute title="{i18n>Filtered}" id="id2"></ObjectAttribute>
+							</attributes>
+							<firstStatus>
+								<ObjectStatus text="Consumed"></ObjectStatus>
+							</firstStatus>
+						</ObjectListItem>
+					</items>
+				</List>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

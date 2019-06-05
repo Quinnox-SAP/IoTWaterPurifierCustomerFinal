@@ -1,0 +1,23 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.controller.ServiceHistory"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>SrvHisTitle}" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<SearchField id="idSearch" liveChange="onSearch"></SearchField>
+			<!--<Label text = "Device Name" id="id1" design="Bold"></Label>-->
+			<Toolbar class="sapUiMediumMarginTop" id="toolbar1">
+				<Label id="id1" design="Bold"></Label>
+			</Toolbar>
+			<List id="idList" mode="SingleSelectMaster" items="{oserviceHistory>/results}">
+				<items>
+					<ObjectListItem intro="{i18n>ServiceRequestNo}" title="{oserviceHistory>ServiceNumber}" number="{oserviceHistory>DateOfCreation}"
+						numberUnit="{oserviceHistory>Status}">
+						<attributes>
+							<!--<ObjectAttribute title="Device Name"></ObjectAttribute>-->
+							<ObjectAttribute title="Fault Description" text="{oserviceHistory>FaultCodeDesc}"></ObjectAttribute>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,43 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:iot="sap.ui.iot.controls"
+	xmlns:iotele="sap.ui.iot.elements" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="com.controller.Main" displayBlock="true" xmlns:f="sap.f">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Login Page" backgroundDesign="Solid" showFooter="false">
+				<content>
+					<!--<VBox width="%" direction="Column">-->
+					<!--	<items>-->
+					<!--		<iot:IoTThingList headerText="Thing List" initialSortColumn="ThingId" initialSortOrder="Ascending" rowSelect="zoomToMap" controlType="List"-->
+					<!--			things="{path:'/Things',parameters:{expand:' DYN_ENT_com_sap_appiot_eventtypes__StandardEventType '}}">-->
+					<!--<iot:columns>-->
+					<!--	<iotele:IoTThingListColumnHeader text="{i18n>thingListOnMapInformation1}"/>-->
+					<!--	<iotele:IoTThingListColumnHeader text="{i18n>thingListOnMapInformation2}"/>-->
+					<!--	<iotele:IoTThingListColumnHeader text="{i18n>thingListOnMapInformation3}"/>-->
+					<!--</iot:columns>-->
+					<!--			<iot:things>-->
+					<!--<m:Text text="{ThingId}"></m:Text>-->
+					<!--				<iotele:IoTThingListElement thingImage="{ThingId}" highSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/High}"-->
+					<!--					lowSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Low}"-->
+					<!--					mediumSeverity="{DYN_ENT_com_sap_appiot_eventtypes__StandardEventType/Medium}">-->
+					<!--					<iotele:cells>-->
+					<!--						<iotele:IoTThingListColumn text="{ThingName}"/>-->
+					<!--						<iotele:IoTThingListColumn text="{ThingId}"/>-->
+					<!--						<iotele:IoTThingListColumn text="{ThingExternalId}"/>-->
+					<!--					</iotele:cells>-->
+					<!--				</iotele:IoTThingListElement>-->
+					<!--			</iot:things>-->
+					<!--		</iot:IoTThingList>-->
+					<!--	</items>-->
+					<!--</VBox>-->
+				
+			<VBox alignContent="Center" alignItems="Center" height="100%" width="100%" justifyContent="Center">
+				<f:Avatar src="" initials="" displayShape="Circle" displaySize="M" imageFitType="Cover" class="sapUiTinyMargin"/>
+				<Label text="{i18n>MobileNo}"></Label>
+				<Input id="idnum" type="Text" maxLength="10"></Input>
+				<Button text="{i18n>LoginBtn}" press="onSubmit" icon="sap-icon://employee-approvals"></Button>
+			</VBox>
+		</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
