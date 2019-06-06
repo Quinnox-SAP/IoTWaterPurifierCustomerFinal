@@ -4,7 +4,7 @@
 		<pages>
 			<Page title="{i18n>ServReqTitle}" showNavButton="true" navButtonPress="onNavBack">
 				<content>
-					<f:Form>
+					<f:Form editable="true">
 						<f:title>
 							<core:Title text="{i18n>ServiceCreationTitle}"/>
 						</f:title>
