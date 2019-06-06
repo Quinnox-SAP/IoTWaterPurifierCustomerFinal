@@ -27,7 +27,7 @@ sap.ui.define([
 				
 			//Close the Busy Indicator and retrieve the arguments passed while routing
 			// sap.ui.getCore().byId("idBusy").close();
-			sap.ui.getCore().sThingId = oEvent.getParameter("arguments").thingId;
+			// sap.ui.getCore().sThingId = oEvent.getParameter("arguments").thingId;
 			var sHeaderTitle = oEvent.getParameter("arguments").headerTitle;
 			var sSubHeaderTitle = oEvent.getParameter("arguments").subHeaderTitle;
 			this.bNavMp = false;
