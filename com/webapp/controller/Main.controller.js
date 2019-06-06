@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox"
-], function (Controller,MessageBox) {
+], function (Controller, MessageBox) {
 	"use strict";
 	return Controller.extend("com.controller.Main", {
-		onInit:function(){
-				this.result = {};
+		onInit: function () {
+			this.result = {};
 			this.result.items = [];
 
 			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
@@ -24,7 +24,7 @@ sap.ui.define([
 				}, this)
 			});
 		},
-			onBeforeShow: function (oEvent) {
+		onBeforeShow: function (oEvent) {
 
 			// var thindId1 = "1499FB1614014E2DB4A1B616C2C96564";
 			// var thingId2 = "256B9DAF767E4AED99E1E8919ABF6486";
@@ -60,7 +60,7 @@ sap.ui.define([
 		onSubmit: function (oEvent) {
 			var that = this;
 			this.mobNum = that.getView().byId("idnum").getValue();
-			
+
 			sap.ui.getCore().sThingId = sap.ui.getCore().thingId1;
 			// // this.sThingId = sap.ui.getCore().thingId2;
 			// this.sThingId = sap.ui.getCore().thingId3;
@@ -134,13 +134,13 @@ sap.ui.define([
 						//navigation code: Pass parameters in manfiest
 						// that.getOwnerComponent().getRouter().navTo("Tile");
 						that.getOwnerComponent().getRouter().navTo("Tile", {
-							deviceId:sap.ui.getCore().deviceId,
-							FaultCode : sap.ui.getCore().faultCode,
-							filterLife:sap.ui.getCore().filterLife,
-							waterConsumption:sap.ui.getCore().waterConsumption,
-							waterFiltered:sap.ui.getCore().waterFiltered ,
-						    mobileNum: that.mobNum,
-						    filterType:sap.ui.getCore().filterType,
+							deviceId: sap.ui.getCore().deviceId,
+							FaultCode: sap.ui.getCore().faultCode,
+							filterLife: sap.ui.getCore().filterLife,
+							waterConsumption: sap.ui.getCore().waterConsumption,
+							waterFiltered: sap.ui.getCore().waterFiltered,
+							mobileNum: that.mobNum,
+							filterType: sap.ui.getCore().filterType,
 						});
 
 					} else {
@@ -252,13 +252,13 @@ sap.ui.define([
 						//navigation code: Pass parameters in manfiest
 						// that.getOwnerComponent().getRouter().navTo("Tile");
 						that.getOwnerComponent().getRouter().navTo("Tile", {
-								deviceId:sap.ui.getCore().deviceId,
-							FaultCode : sap.ui.getCore().faultCode,
-							filterLife:sap.ui.getCore().filterLife,
-							waterConsumption:sap.ui.getCore().waterConsumption,
-							waterFiltered:sap.ui.getCore().waterFiltered ,
-						    mobileNum: that.mobNum,
-						    filterType:sap.ui.getCore().filterType,
+							deviceId: sap.ui.getCore().deviceId,
+							FaultCode: sap.ui.getCore().faultCode,
+							filterLife: sap.ui.getCore().filterLife,
+							waterConsumption: sap.ui.getCore().waterConsumption,
+							waterFiltered: sap.ui.getCore().waterFiltered,
+							mobileNum: that.mobNum,
+							filterType: sap.ui.getCore().filterType,
 
 						});
 
@@ -348,13 +348,13 @@ sap.ui.define([
 						//navigation code: Pass parameters in manfiest
 						// that.getOwnerComponent().getRouter().navTo("Tile");
 						that.getOwnerComponent().getRouter().navTo("Tile", {
-                          	deviceId:sap.ui.getCore().deviceId,
-							FaultCode : sap.ui.getCore().faultCode,
-							filterLife:sap.ui.getCore().filterLife,
-							waterConsumption:sap.ui.getCore().waterConsumption,
-							waterFiltered:sap.ui.getCore().waterFiltered ,
-						    mobileNum: that.mobNum,
-						    filterType:sap.ui.getCore().filterType,
+							deviceId: sap.ui.getCore().deviceId,
+							FaultCode: sap.ui.getCore().faultCode,
+							filterLife: sap.ui.getCore().filterLife,
+							waterConsumption: sap.ui.getCore().waterConsumption,
+							waterFiltered: sap.ui.getCore().waterFiltered,
+							mobileNum: that.mobNum,
+							filterType: sap.ui.getCore().filterType,
 						});
 
 					} else {
@@ -372,4 +372,3 @@ sap.ui.define([
 		},
 	});
 });
-

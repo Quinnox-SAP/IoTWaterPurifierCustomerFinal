@@ -2,7 +2,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:iot="sap.ui.iot.controls" xmlns:iotele="sap.ui.iot.elements">
 	<App>
 		<pages>
-			<Page title="Water Quality Analysis" showNavButton="true" navButtonPress="onPressBack">
+			<Page title="Water Quality Analysis"  navButtonPress="onPressBack">
 				<content>
 					<iot:IoTChart id="idChart" noOfHours="24" isSliderVisible="true" rememberTimeRange="false" rememberMeasuredValues="false"
 						displayLegend="true"></iot:IoTChart>
