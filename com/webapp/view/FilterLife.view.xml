@@ -2,7 +2,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<App>
 		<pages>
-			<Page title="{i18n>FilterTitle}" showNavButton="true" navButtonPress="onNavBack">
+			<Page title="{i18n>FilterTitle}" navButtonPress="onNavBack">
 				<!--<Toolbar>-->
 				<!--	<SearchField></SearchField>-->
 				<!--</Toolbar>-->

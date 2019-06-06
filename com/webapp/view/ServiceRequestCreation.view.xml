@@ -2,7 +2,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form">
 	<App>
 		<pages>
-			<Page title="{i18n>ServReqTitle}" showNavButton="true" navButtonPress="onNavBack">
+			<Page title="{i18n>ServReqTitle}" navButtonPress="onNavBack">
 				<content>
 					<f:Form editable="true">
 						<f:title>
