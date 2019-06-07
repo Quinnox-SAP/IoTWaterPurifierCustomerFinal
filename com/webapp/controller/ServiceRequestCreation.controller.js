@@ -1,13 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-		"sap/m/MessageBox",
+	"sap/m/MessageBox",
 	"sap/ui/core/routing/History"
-], function (Controller,MessageBox,History) {
+], function (Controller, MessageBox, History) {
 	"use strict";
 
 	return Controller.extend("com.controller.ServiceRequestCreation", {
 
-	onInit: function () {
+		onInit: function () {
 			this.result = {};
 			this.result.items = [];
 			this.deviceId = "";
@@ -60,14 +60,15 @@ sap.ui.define([
 				data.Issue = issue;
 				data.Comment = comments;
 				data.CustomerID = that.customerID;
-				data.DeviceName = that.deviceId;
+				data.DeviceName = "";
+				data.ModelId = that.deviceId;
 
 				data.FaultCode = faultCode;
 				// data.FaultCode = that.FaultCode;
 				// data.DateOfCreation = "";
 				// data.ServiceNumber = "";
 				this.odataService.create("/ServiceRequestSet", data, null, function (odata, response) {
-					
+
 						var msg = "Service Request " + response.data.ServiceNumber + " Created Sucessfully";
 						that.getView().byId("issue").setValue("");
 						that.getView().byId("comments").setValue("");

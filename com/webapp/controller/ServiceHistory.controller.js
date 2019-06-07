@@ -1,8 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-		"sap/ui/model/Filter",
+	"sap/ui/model/Filter",
 	"sap/ui/core/routing/History"
-], function (Controller,Filter,History) {
+], function (Controller, Filter, History) {
 	"use strict";
 
 	return Controller.extend("com.controller.ServiceHistory", {
@@ -18,6 +18,18 @@ sap.ui.define([
 
 		_onObjectMatched: function (oEvent) {
 			var that = this;
+			that.getView().byId("idSearch").setValue("");
+			var aFilters = [];
+			var sQuery = "";
+			if (sQuery && sQuery.length > 0) {
+				var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+				aFilters.push(filter);
+			}
+
+			// update list binding
+			var list = this.byId("idList");
+			var binding = list.getBinding("items");
+			binding.filter(aFilters);
 			var custId = oEvent.getParameter("arguments").customerID;
 			var deviceId = oEvent.getParameter("arguments").deviceId;
 			this.getView().byId("id1").setText(deviceId);
@@ -99,7 +111,6 @@ sap.ui.define([
 		//	onBeforeRendering: function() {
 		//
 		//	},
-
 
 	});
 
