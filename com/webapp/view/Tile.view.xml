@@ -3,6 +3,9 @@
 	<App>
 		<pages>
 			<Page title="Welcome, {oCustomer>/Name}"  navButtonPress="onPressBack">
+					<headerContent>
+			<Button icon="sap-icon://log" press="onPress"/>
+		   </headerContent>
 				<content>
 					<GenericTile header="{i18n>WaterQuality}" subheader="{i18n>TotalWaterConsumed}" class="sapUiTinyMargin" press="onWaterQualityPress">
 						<!--<GenericTile header="{i18n>WaterQuality}" class="sapUiTinyMargin" press="onWaterQualityPress">-->

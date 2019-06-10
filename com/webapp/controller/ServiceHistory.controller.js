@@ -101,6 +101,9 @@ sap.ui.define([
 				this.getOwnerComponent().getRouter().navTo("Tile");
 			}
 
+		},
+			onPress:function(){
+			this.getOwnerComponent().getRouter().navTo("Main");
 		}
 
 		/**

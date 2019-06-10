@@ -33,7 +33,25 @@ sap.ui.define([
 			var waterFiltered = oEvent.getParameter("arguments").waterFiltered;
 			this.getView().byId("idList").setNumber(filterConsumed);
 			this.getView().byId("id1").setText(filterType);
-			this.getView().byId("id2").setText(waterFiltered);
+			var waterfiltered1 = waterFiltered +" "+ "litres";
+			this.getView().byId("id2").setText(waterfiltered1);
+			 
+			 if(filterConsumed>80){
+			 	this.getView().byId("id3").setText("Bad");
+			 	this.getView().byId("id3").setState(sap.ui.core.ValueState.Error);
+			 	
+			 }
+			else if(filterConsumed>50)
+			{
+			this.getView().byId("id3").setText("Average");
+				this.getView().byId("id3").setState(sap.ui.core.ValueState.Warning);
+			}
+			else
+			this.getView().byId("id3").setText("Good");
+			this.getView().byId("id3").setState(sap.ui.core.ValueState.Success);
+			
+			
+			
 		},
 
 		// _onRouteMatched: function () {
@@ -63,6 +81,9 @@ sap.ui.define([
 			
 		
 			// this.getView().byId("id1").setText("");
+		},
+		onPress:function(){
+			this.getOwnerComponent().getRouter().navTo("Main");
 		}
 
 

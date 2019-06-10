@@ -126,6 +126,10 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			}
+		},
+	
+			onPress:function(){
+			this.getOwnerComponent().getRouter().navTo("Main");
 		}
 
 

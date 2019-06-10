@@ -44,7 +44,7 @@ sap.ui.define([
 			that.filterConsumed = ((that.waterFiltered / filterLife) * 100);
 			that.filterConsumed = Math.round(that.filterConsumed);
 			that.getView().byId("id3").setValue(that.filterConsumed);
-
+		
 			this.odataService.read("/CustomerSet('" + mobNum + "')", null, null, false, function (
 				response) {
 				if (response.ValidPhoneNo === "Success") {
@@ -181,7 +181,10 @@ sap.ui.define([
 				this.getOwnerComponent().getRouter().navTo("Main");
 			}
 
-		}
+		},
+			onPress:function(){
+			this.getOwnerComponent().getRouter().navTo("Main");
+		}	
 
 		
 

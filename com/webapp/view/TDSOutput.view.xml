@@ -3,6 +3,13 @@
 	<App>
 		<pages>
 			<Page title="Water Quality Analysis"  navButtonPress="onPressBack">
+					<headerContent>
+						<!--<Button icon="sap-icon://sys-help" tooltip="action">-->
+		    <!--             <core:ListItem text="Water Filter Issue"/>-->
+						<!--</Button>-->
+			<Button icon="sap-icon://log" press="onPress"/>
+			
+		   </headerContent>
 				<content>
 					<iot:IoTChart id="idChart" noOfHours="24" isSliderVisible="true" rememberTimeRange="false" rememberMeasuredValues="false"
 						displayLegend="true"></iot:IoTChart>

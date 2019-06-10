@@ -69,7 +69,7 @@ sap.ui.define([
 				// data.ServiceNumber = "";
 				this.odataService.create("/ServiceRequestSet", data, null, function (odata, response) {
 
-						var msg = "Service Request " + response.data.ServiceNumber + " Created Sucessfully";
+						var msg = "Service Request " + response.data.ServiceNumber + " Created Successfully";
 						that.getView().byId("issue").setValue("");
 						that.getView().byId("comments").setValue("");
 						MessageBox.success(msg, {
@@ -117,6 +117,9 @@ sap.ui.define([
 				this.getOwnerComponent().getRouter().navTo("Tile");
 			}
 
+		},
+			onPress:function(){
+			this.getOwnerComponent().getRouter().navTo("Main");
 		}
 
 		/**
