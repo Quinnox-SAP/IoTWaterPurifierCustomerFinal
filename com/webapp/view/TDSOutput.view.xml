@@ -2,14 +2,27 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:iot="sap.ui.iot.controls" xmlns:iotele="sap.ui.iot.elements">
 	<App>
 		<pages>
-			<Page title="Water Quality Analysis"  navButtonPress="onPressBack">
-					<headerContent>
-						<!--<Button icon="sap-icon://sys-help" tooltip="action">-->
-		    <!--             <core:ListItem text="Water Filter Issue"/>-->
-						<!--</Button>-->
-			<Button icon="sap-icon://log" press="onPress"/>
+			<Page title="Water Quality Analysis" >
 			
-		   </headerContent>
+				
+			
+		   
+		    <customHeader>
+           <Bar>
+                <contentRight>
+                    	<Button icon="sap-icon://log" press="onPress"/>
+			
+                </contentRight>
+                <contentMiddle>
+                	<Text text="Water Quality Analysis"></Text>
+                </contentMiddle>
+              
+                <contentLeft>
+                	<Label text="Ideal pH = 6.5pH - 8.5pH ,"></Label>
+					<Label text="Ideal TDS = 300ppm - 600ppm"></Label>
+                </contentLeft>
+           </Bar>
+      </customHeader>
 				<content>
 					<iot:IoTChart id="idChart" noOfHours="24" isSliderVisible="true" rememberTimeRange="false" rememberMeasuredValues="false"
 						displayLegend="true"></iot:IoTChart>
