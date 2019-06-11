@@ -396,7 +396,7 @@ sap.ui.define([
 					that.getOwnerComponent().getRouter().navTo("InstallationView", {
 						deviceId: sap.ui.getCore().deviceId,
 						FaultCode: sap.ui.getCore().faultCode,
-						mobileNum: this.mobNum
+						mobileNum: that.mobNum
 
 					});
 				}

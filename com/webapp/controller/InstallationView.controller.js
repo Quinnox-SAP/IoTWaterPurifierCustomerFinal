@@ -15,11 +15,12 @@ sap.ui.define([
 		onInit: function () {
 			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute("ServiceRequestCreation").attachMatched(this._onObjectMatched, this);
-
+			oRouter.getRoute("InstallationView").attachMatched(this._onObjectMatched, this);
+			this.getView().byId("issue").setValue("Installation Request");
 		},
 		_onObjectMatched: function (oEvent) {
 			var that = this;
+			that.getView().byId("issue").setValue("Installation Request");
 			that.deviceId = oEvent.getParameter("arguments").deviceId;
 			that.FaultCode = oEvent.getParameter("arguments").FaultCode;
 			that.mobileNum = oEvent.getParameter("arguments").mobileNum;
@@ -27,6 +28,7 @@ sap.ui.define([
 			this.odataService.read("/CustomerSet('" + mobileNumber + "')", null, null, false, function (
 				response) {
 				if (response.ValidPhoneNo === "Success") {
+					console.log(response);
 					that.getOwnerComponent().getModel("oCustomer").setData(response);
 					that.custId = response.BusinessPartner;
 					that.getOwnerComponent().getModel("oCustomer").refresh(true);
@@ -40,9 +42,9 @@ sap.ui.define([
 		},
 		onSubmit: function () {
 			var that = this;
-			var issue = that.getView().byId("issue").getValue;
+			var issue = that.getView().byId("issue").getValue();
 			var comments = that.getView().byId("comments").getValue();
-			var faultCode = "";
+			var faultCode = "Z529";
 			var data = {};
 			data.Issue = issue;
 			data.Comment = comments;
