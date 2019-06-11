@@ -125,11 +125,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -140,25 +138,21 @@
 				"controlAggregation": "pages",
 				"controlId": "idAppControl"
 			},
-			"routes": [
-				{
-					"name": "RootView",
-					"pattern": "",
-					"target": [
-						"Main"
-					]
-				},
-				{
-					"name": "Tile",
-					"pattern": "Tile/{deviceId}/{FaultCode}/{filterLife}/{waterConsumption}/{waterFiltered}/{mobileNum}/{filterType}",
-					"target": "Tile"
-				},
-				{
-					"name": "TDSOutput",
-					"pattern": "TDSOutput/:navFrom:/:headerTitle:/:subHeaderTitle:/:mpPath:",
-					"target": "TDSOutput"
-				},
-				{
+			"routes": [{
+				"name": "RootView",
+				"pattern": "",
+				"target": [
+					"Main"
+				]
+			}, {
+				"name": "Tile",
+				"pattern": "Tile/{deviceId}/{FaultCode}/{filterLife}/{waterConsumption}/{waterFiltered}/{mobileNum}/{filterType}",
+				"target": "Tile"
+			}, {
+				"name": "TDSOutput",
+				"pattern": "TDSOutput/:navFrom:/:headerTitle:/:subHeaderTitle:/:mpPath:",
+				"target": "TDSOutput"
+			}, {
 				"name": "FilterLife",
 				"pattern": "FilterLife/{FilterConsumed}/{filterType}/{waterFiltered}",
 				"target": "FilterLife"
@@ -166,13 +160,15 @@
 				"name": "ServiceHistory",
 				"pattern": "ServiceHistory/{customerID}/{deviceId}",
 				"target": "ServiceHistory"
-			},
-			 {
+			}, {
 				"name": "ServiceRequestCreation",
 				"pattern": "ServiceRequestCreation/{customerID}/{deviceId}",
 				"target": "ServiceRequestCreation"
-			}
-			],
+			}, {
+				"name": "InstallationView",
+				"pattern": "InstallationView/{deviceId},{FaultCode},{mobileNum}",
+				"target": "InstallationView"
+			}],
 			"targets": {
 				"Main": {
 					"viewType": "XML",
@@ -197,6 +193,10 @@
 				"ServiceRequestCreation": {
 					"viewType": "XML",
 					"viewName": "ServiceRequestCreation"
+				},
+				"InstallationView": {
+					"viewType": "XML",
+					"viewName": "InstallationView"
 				}
 			}
 		}

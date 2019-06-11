@@ -10,7 +10,7 @@
 		    <customHeader>
            <Bar>
                 <contentRight>
-                    	<Button icon="sap-icon://log" press="onPress"/>
+                    	<Button icon="sap-icon://log" press="onPress" type="Reject"/>
 			
                 </contentRight>
                 <contentMiddle>

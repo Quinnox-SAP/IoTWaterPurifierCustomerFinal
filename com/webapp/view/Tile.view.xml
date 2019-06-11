@@ -2,14 +2,14 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<App>
 		<pages>
-			<Page title="Welcome, {oCustomer>/Name}"  navButtonPress="onPressBack">
-					<headerContent>
-			<Button icon="sap-icon://log" press="onPress"/>
-		   </headerContent>
+			<Page title="Welcome, {oCustomer>/Name}" navButtonPress="onPressBack">
+				<headerContent>
+					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
+				</headerContent>
 				<content>
 					<GenericTile header="{i18n>WaterQuality}" subheader="{i18n>TotalWaterConsumed}" class="sapUiTinyMargin" press="onWaterQualityPress">
 						<!--<GenericTile header="{i18n>WaterQuality}" class="sapUiTinyMargin" press="onWaterQualityPress">-->
-						<TileContent  unit="Litres">
+						<TileContent unit="Litres">
 							<content>
 								<NumericContent id="id1"></NumericContent>
 							</content>
