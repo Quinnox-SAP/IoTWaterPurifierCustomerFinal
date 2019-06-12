@@ -83,7 +83,7 @@ sap.ui.define([
 			// this.getView().byId("id1").setText("");
 		},
 		onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("Main");
+			this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 

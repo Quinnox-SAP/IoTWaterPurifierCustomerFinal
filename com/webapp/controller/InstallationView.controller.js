@@ -13,7 +13,7 @@ sap.ui.define([
 		 * @memberOf com.view.InstallationView
 		 */
 		onInit: function () {
-			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {json:true});
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("InstallationView").attachMatched(this._onObjectMatched, this);
 			this.getView().byId("issue").setValue("Installation Request");
@@ -38,7 +38,7 @@ sap.ui.define([
 
 		},
 		onPress: function () {
-			this.getOwnerComponent().getRouter().navTo("Main");
+			this.getOwnerComponent().getRouter().navTo("RootView");
 		},
 		onSubmit: function () {
 			var that = this;

@@ -14,7 +14,17 @@ sap.ui.define([
 			this.FaultCode = "";
 			this.customerID = "";
 
-			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
+				json: true
+			});
+			// this.odataService.disableHeadRequestForToken = true;
+			// this.odataService.setHeaders({
+			// 		"X-Requested-With": "XMLHttpRequest",
+			// 		"X-CSRF-Token": "Fetch"
+
+			// 	}
+
+			// );
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("ServiceRequestCreation").attachMatched(this._onObjectMatched, this);
 		},
@@ -95,6 +105,8 @@ sap.ui.define([
 			} else {
 				MessageBox.information("Please enter all mandatory fields");
 			}
+			
+			
 
 		},
 		// comboboxChange: function (oEvent) {
@@ -118,8 +130,8 @@ sap.ui.define([
 			}
 
 		},
-			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("Main");
+		onPress: function () {
+			this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 		/**

@@ -1,4 +1,4 @@
-ID: IoTWaterPurifierCust
+ID: iotCustomerApp
 _schema-version: '2.1'
 version: 0.0.1
 modules:
@@ -11,124 +11,49 @@ modules:
     build-parameters:
       builder: grunt
     requires:
-      - name: IOTAS-ADVANCEDLIST-THING-ODATA
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: IOTAS-ADVANCEDLIST-THING-ODATA
-          url: '~{url}'
-      - name: IOTAS-DETAILS-THING-ODATA
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: IOTAS-DETAILS-THING-ODATA
-          url: '~{url}'
-      - name: IOTAS-COMPOSITE-EVENTS-ODATA
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: IOTAS-COMPOSITE-EVENTS-ODATA
-          url: '~{url}'
+      - name: iotCustomerApp
       - name: IOTAS_CONTROLS
         group: destinations
         properties:
+          forwardAuthToken: true
           strictSSL: false
-          forwardAuthToken: false
           name: IOTAS_CONTROLS
-          url: '~{url}'
-      - name: IOTAS
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: IOTAS
-          url: '~{url}'
-      - name: IOTAS-FILEIMAGE
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: IOTAS-FILEIMAGE
           url: '~{url}'
       - name: sapui52
         group: destinations
         properties:
-          strictSSL: false
           forwardAuthToken: true
+          strictSSL: false
           name: sapui52
           url: '~{url}'
-      - name: ssbruntime_cf
+      - name: IotWaterPurifier
         group: destinations
         properties:
-          strictSSL: false
           forwardAuthToken: true
-          name: ssbruntime_cf
-          url: '~{url}'
-      - name: ssbruntime
-        group: destinations
-        properties:
           strictSSL: false
-          forwardAuthToken: true
-          name: ssbruntime
+          name: IotWaterPurifier
           url: '~{url}'
-      - name: ssbservice
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: ssbservice
-          url: '~{url}'
-      - name: BusinessSystem00
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: BusinessSystem00
-          url: '~{url}'
-      - name: BusinessSystem01
-        group: destinations
-        properties:
-          strictSSL: false
-          forwardAuthToken: true
-          name: BusinessSystem01
-          url: '~{url}'
+      - name: LeonardoInstance
+      
 resources:
-  - name: IOTAS-ADVANCEDLIST-THING-ODATA
-    properties:
-      url: 'https://advancedlist-thing-sap.cfapps.eu10.hana.ondemand.com'
-  - name: IOTAS-DETAILS-THING-ODATA
-    properties:
-      url: 'https://details-thing-sap.cfapps.eu10.hana.ondemand.com'
-  - name: IOTAS-COMPOSITE-EVENTS-ODATA
-    properties:
-      url: 'https://composite-events-odata.cfapps.eu10.hana.ondemand.com'
-  - name: IOTAS_CONTROLS
-    properties:
-      url: 'https://sapuiiot.cfapps.eu10.hana.ondemand.com'
-  - name: IOTAS
-    properties:
-      url: 'https://appiot-mds.cfapps.eu10.hana.ondemand.com'
-  - name: IOTAS-FILEIMAGE
-    properties:
-      url: 'https://appiot-fs.cfapps.eu10.hana.ondemand.com'
-  - name: sapui52
-    properties:
-      url: 'https://sapui5.hana.ondemand.com'
-  - name: ssbruntime_cf
-    properties:
-      url: 'https://sap-smartbusiness-service-ui-runtime.cfapps.sap.hana.ondemand.com'
-  - name: ssbruntime
-    properties:
-      url: 'https://sap-smartbusiness-service-ui-runtime.cfapps.sap.hana.ondemand.com'
-  - name: ssbservice
-    properties:
-      url: 'https://sap-smartbusiness-service-hcp-cf.cfapps.eu10.hana.ondemand.com'
-  - name: BusinessSystem00
-    properties:
-      url: 'https://sap-smartbusiness-service-hcp-cf.cfapps.sap.hana.ondemand.com'
-  - name: BusinessSystem01
-    properties:
-      url: 'https://analytics-thing-sap.cfapps.eu10.hana.ondemand.com'
+      - name: iotCustomerApp
+        parameters:
+          path: ./xs-security.json
+          service-plan: application
+        type: com.sap.xs.uaa
+      - name: sapui52
+        properties:
+          url: 'https://sapui5.hana.ondemand.com'
+      - name: IOTAS_CONTROLS
+        properties:
+          url: 'https://sapuiiot.cfapps.eu10.hana.ondemand.com'
+      - name: LeonardoInstance
+        type: org.cloudfoundry.existing-service
+      - name: IotWaterPurifier
+        properties:
+          url: 'http://103.10.249.29:8000/sap/opu/odata/sap/ZQNX_IOT_SRV/'
+       
+
+ 
+  
+  

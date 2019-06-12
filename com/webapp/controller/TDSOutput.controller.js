@@ -129,7 +129,7 @@ sap.ui.define([
 		},
 	
 			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("Main");
+			this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 

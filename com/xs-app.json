@@ -1,88 +1,60 @@
 {
   "welcomeFile": "/com/webapp/index.html",
+  "authenticationMethod":"route",
   "logout": {
     "logoutEndpoint": "/do/logout"
   },
   "routes": [
-    {
-      "source": "^/IotWaterPurifier/(.*)$",
-      "target": "$1",
-      "authenticationType": "none",
-      "destination": "IotWaterPurifier",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/com/webapp/(.*)$",
-      "target": "$1",
-      "localDir": "webapp"
-    },
-    {
-      "source": "^/IOTAS-ADVANCEDLIST-THING-ODATA/(.*)$",
-      "destination": "IOTAS-ADVANCEDLIST-THING-ODATA",
-      "target": "$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/IOTAS-DETAILS-THING-ODATA/(.*)$",
-      "destination": "IOTAS-DETAILS-THING-ODATA",
-      "target": "$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/IOTAS-COMPOSITE-EVENTS-ODATA/(.*)$",
-      "destination": "IOTAS-COMPOSITE-EVENTS-ODATA",
-      "target": "$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/resources/sap/ui/iot/(.*)$",
-      "destination": "IOTAS_CONTROLS",
-      "target": "/sap/ui/iot/$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/backend/(.*)$",
-      "destination": "IOTAS",
-      "target": "$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/backend-image/(.*)$",
-      "destination": "IOTAS-FILEIMAGE",
-      "target": "$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/resources/(.*)$",
-      "destination": "sapui52",
-      "target": "$1",
-      "csrfProtection": false
-    },
-    {
-      "source": "^/resources/sap/smartbusiness/ui/(.*)$",
-      "destination": "ssbruntime_cf",
-      "target": "/sap/smartbusiness/ui/$1",
-      "authenticationType": "xsuaa"
-    },
-    {
-      "source": "^.*/destinations/ssbservice/(.*)$",
-      "target": "$1",
-      "destination": "ssbservice",
-      "csrfProtection": false,
-      "authenticationType": "xsuaa"
-    },
-    {
-      "source": "^.*/destinations/BusinessSystem01/(.*)$",
-      "target": "$1",
-      "destination": "BusinessSystem01",
-      "csrfProtection": false,
-      "authenticationType": "xsuaa"
-    },
-    {
-      "source": "^.*/destinations/ssbruntime/(.*)$",
-      "target": "$1",
-      "destination": "ssbruntime",
-      "authenticationType": "xsuaa"
-    }
-  ]
+    	{
+		"source": "^/com/webapp/(.*)$",
+		"target": "$1",
+		"localDir": "webapp"
+	}, {
+		"source": "^/IOTAS-ADVANCEDLIST-THING-ODATA/(.*)$",
+		"service": "iot", 
+    	 "endpoint": "advancedlist-thing-sap",
+		"target": "$1",
+		"csrfProtection": false
+	}, {
+		"source": "^/IOTAS-DETAILS-THING-ODATA/(.*)$",
+		"service": "iot",
+    	 "endpoint": "details-thing-sap",
+		"target": "$1",
+		"csrfProtection": false
+	}, {
+		"source": "^/IOTAS-COMPOSITE-EVENTS-ODATA/(.*)$",
+		"service": "iot",
+    	 "endpoint": "composite-events-odata",
+		"target": "$1",
+		"csrfProtection": false
+	}, {
+		"source": "^/resources/sap/ui/iot/(.*)$",
+		"destination": "IOTAS_CONTROLS",
+		"target": "/sap/ui/iot/$1",
+		"csrfProtection": false
+	}, {
+		"source": "^/backend/(.*)$",
+		"service": "iot",
+    	 "endpoint": "appiot-mds",
+		"target": "$1",
+		"csrfProtection": false
+	}, {
+		"source": "^/backend-image/(.*)$",
+		"service": "iot",
+    	 "endpoint": "tm-file",
+		"target": "$1",
+		"csrfProtection": false
+	}, {
+		"source": "^/resources/(.*)$",
+		"destination": "sapui52",
+		"target": "$1",
+		"csrfProtection": false
+	},
+	{
+		"source": "^/IotWaterPurifier/(.*)$",
+		"destination": "IotWaterPurifier",
+		"target": "$1",
+		"csrfProtection": true
+	}
+	]
 }

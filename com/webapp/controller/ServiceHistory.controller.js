@@ -10,7 +10,7 @@ sap.ui.define([
 		onInit: function () {
 			this.result = {};
 			this.result.items = [];
-			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {json:true});
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("ServiceHistory").attachMatched(this._onObjectMatched, this);
@@ -103,7 +103,7 @@ sap.ui.define([
 
 		},
 			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("Main");
+			this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 		/**

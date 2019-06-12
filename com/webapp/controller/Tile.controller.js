@@ -22,7 +22,8 @@ sap.ui.define([
 			this.waterFiltered = ""; //to be passed to next screen
 			this.filterLife = "";
 
-			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			// this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {json:true});
 			// this.odataService = this.getView().getModel("ZQNX");
 			this.custId = "";
 			var oRouter = this.getOwnerComponent().getRouter();
@@ -183,7 +184,7 @@ sap.ui.define([
 
 		},
 			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("Main");
+			this.getOwnerComponent().getRouter().navTo("RootView");
 		}	
 
 		

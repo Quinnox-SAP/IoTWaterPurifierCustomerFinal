@@ -8,7 +8,9 @@ sap.ui.define([
 			this.result = {};
 			this.result.items = [];
 
-			this.zodataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			this.zodataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
+				json: true
+			});
 
 			this.mobNum = "";
 
@@ -390,7 +392,7 @@ sap.ui.define([
 						waterConsumption: sap.ui.getCore().waterConsumption,
 						waterFiltered: sap.ui.getCore().waterFiltered,
 						mobileNum: that.mobNum,
-						filterType: sap.ui.getCore().filterType,
+						filterType: sap.ui.getCore().filterType
 					});
 				} else {
 					that.getOwnerComponent().getRouter().navTo("InstallationView", {

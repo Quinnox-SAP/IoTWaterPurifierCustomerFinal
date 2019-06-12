@@ -130,5 +130,6 @@
     "sap-iot-thingtype",
     "sap-iot-eventtype",
     "sap-iot-pst"
-  ]
+  ],
+  "authenticationMethod": "none"
 }
