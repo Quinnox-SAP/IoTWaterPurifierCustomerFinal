@@ -2,21 +2,21 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form">
 	<App>
 		<pages>
-			<Page title="{i18n>ServReqTitle}" navButtonPress="onNavBack">
+			<Page title="Service Request Creation" navButtonPress="onNavBack">
 				<headerContent>
 					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
 				</headerContent>
 				<content>
 					<f:Form editable="true">
 						<f:title>
-							<core:Title text="{i18n>ServiceCreationTitle}"/>
+							<core:Title text="Please enter the details"/>
 						</f:title>
 						<f:formContainers>
 							<f:FormContainer>
 								<f:formElements>
 									<f:FormElement>
 										<f:label>
-											<Label text="{i18n>Issue}" design="Bold" required="true"></Label>
+											<Label text="Issue" design="Bold" required="true"></Label>
 										</f:label>
 										<f:fields>
 											<!--<ComboBox id="issue" filterSecondaryValues="true">-->
@@ -49,7 +49,7 @@
 									</f:FormElement>
 									<f:FormElement>
 										<f:label>
-											<Label text="{i18n>Comments}" design="Bold" required="true"></Label>
+											<Label text="Comments" design="Bold" required="true"></Label>
 										</f:label>
 										<f:fields>
 											<Input type="Text" id="comments"></Input>
@@ -67,7 +67,7 @@
 					<Toolbar>
 						<content>
 							<ToolbarSpacer></ToolbarSpacer>
-							<Button text="{i18n>Save}" type="Accept" press="onSubmitDialog"></Button>
+							<Button text="Save" type="Accept" press="onSubmitDialog"></Button>
 						</content>
 					</Toolbar>
 				</footer>

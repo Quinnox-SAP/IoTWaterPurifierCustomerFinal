@@ -3,7 +3,7 @@
 	controllerName="com.controller.Main" displayBlock="true" xmlns:f="sap.f">
 	<App id="idAppControl">
 		<pages>
-			<Page title="Login Page" backgroundDesign="Solid" showFooter="false">
+			<Page title="IoT Water Purifier" backgroundDesign="Solid" showFooter="false">
 				<content>
 					<!--<VBox width="%" direction="Column">-->
 					<!--	<items>-->
@@ -29,14 +29,13 @@
 					<!--		</iot:IoTThingList>-->
 					<!--	</items>-->
 					<!--</VBox>-->
-				
-			<VBox alignContent="Center" alignItems="Center" height="100%" width="100%" justifyContent="Center">
-				<f:Avatar src="" initials="" displayShape="Circle" displaySize="M" imageFitType="Cover" class="sapUiTinyMargin"/>
-				<Label text="{i18n>MobileNo}"></Label>
-				<Input id="idnum" type="Text" maxLength="10"></Input>
-				<Button text="{i18n>LoginBtn}" press="onSubmit" icon="sap-icon://employee-approvals"></Button>
-			</VBox>
-		</content>
+					<VBox alignContent="Center" alignItems="Center" height="100%" width="100%" justifyContent="Center">
+						<f:Avatar src="" initials="" displayShape="Circle" displaySize="M" imageFitType="Cover" class="sapUiTinyMargin"/>
+						<Label text="Please Enter Your Mobile No"></Label>
+						<Input id="idnum" type="Text" maxLength="10"></Input>
+						<Button text="Login" press="onSubmit" icon="sap-icon://employee-approvals"></Button>
+					</VBox>
+				</content>
 			</Page>
 		</pages>
 	</App>

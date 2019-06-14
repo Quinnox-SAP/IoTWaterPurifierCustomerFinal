@@ -2,30 +2,24 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<App>
 		<pages>
-			<Page title="{i18n>FilterTitle}" navButtonPress="onNavBack">
-			<headerContent>
-			<Button icon="sap-icon://log" press="onPress" type="Reject"/>
-		   </headerContent>
-						
-			
-				
-				
+			<Page title="Filter Life" navButtonPress="onNavBack">
+				<headerContent>
+					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
+				</headerContent>
 				<List mode="SingleSelectMaster">
-				
 					<items>
 						<!--<ObjectListItem intro="{i18n>FilterType}"  id="id1" number="65" numberUnit="%">-->
 						<ObjectListItem id="idList" title="FilterType" number="" numberUnit="%">
 							<attributes>
-								<ObjectAttribute text="{i18n>FilterType}" id="id1"></ObjectAttribute>
-								<ObjectAttribute title="{i18n>Filtered}"  id="id2" ></ObjectAttribute>
-							
+								<ObjectAttribute text="Filter Type" id="id1"></ObjectAttribute>
+								<ObjectAttribute title="Total Water Filtered" id="id2"></ObjectAttribute>
 							</attributes>
 							<firstStatus>
-							<ObjectStatus text="Consumed"></ObjectStatus>
-									</firstStatus>
-								<secondStatus>
-							<ObjectStatus  id="id3" ></ObjectStatus>
-						</secondStatus>
+								<ObjectStatus text="Consumed"></ObjectStatus>
+							</firstStatus>
+							<secondStatus>
+								<ObjectStatus id="id3"></ObjectStatus>
+							</secondStatus>
 						</ObjectListItem>
 					</items>
 				</List>

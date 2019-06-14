@@ -21,7 +21,7 @@
 					<Toolbar>
 						<content>
 							<ToolbarSpacer></ToolbarSpacer>
-							<Button text="{i18n>Save}" type="Accept" press="onSubmit"></Button>
+							<Button text="Save" type="Accept" press="onSubmit"></Button>
 						</content>
 					</Toolbar>
 				</footer>

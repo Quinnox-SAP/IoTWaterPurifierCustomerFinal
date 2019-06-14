@@ -7,7 +7,7 @@
 					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
 				</headerContent>
 				<content>
-					<GenericTile header="{i18n>WaterQuality}" subheader="{i18n>TotalWaterConsumed}" class="sapUiTinyMargin" press="onWaterQualityPress">
+					<GenericTile header="Water Quality" subheader="Water Consumed/Day" class="sapUiTinyMargin" press="onWaterQualityPress">
 						<!--<GenericTile header="{i18n>WaterQuality}" class="sapUiTinyMargin" press="onWaterQualityPress">-->
 						<TileContent unit="Litres">
 							<content>
@@ -16,21 +16,21 @@
 						</TileContent>
 					</GenericTile>
 					<!--<GenericTile header="{i18n>FilterLife}" subheader="Replace UV Membrane" class="sapUiTinyMargin" press="onFilterLifePress">-->
-					<GenericTile header="{i18n>FilterLife}" class="sapUiTinyMargin" press="onFilterLifePress">
+					<GenericTile header="Filter Life" class="sapUiTinyMargin" press="onFilterLifePress">
 						<TileContent footer="consumed" unit="%">
 							<content>
 								<NumericContent id="id3" truncateValueTo="10"></NumericContent>
 							</content>
 						</TileContent>
 					</GenericTile>
-					<GenericTile header="{i18n>ServiceHistory}" class="sapUiTinyMargin" press="onServiceHistoryPress">
+					<GenericTile header="Service History" class="sapUiTinyMargin" press="onServiceHistoryPress">
 						<!--<TileContent footer="{oCustomer>/Status}" unit="{i18n>Status}">-->
 						<!--<content>-->
 						<!--	<NewsContent contentText="{i18n>ServiceDue}" subheader="{oCustomer>/ServiceDueDate}"></NewsContent>-->
 						<!--</content>-->
 						<!--</TileContent>-->
 					</GenericTile>
-					<GenericTile header="{i18n>ServiceCreation}" class="sapUiTinyMargin" press="onServiceRequestPress"></GenericTile>
+					<GenericTile header="Service Request Creation" class="sapUiTinyMargin" press="onServiceRequestPress"></GenericTile>
 				</content>
 			</Page>
 		</pages>
