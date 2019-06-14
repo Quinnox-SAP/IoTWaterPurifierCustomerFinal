@@ -17,14 +17,34 @@ sap.ui.define([
 			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
 				json: true
 			});
+			// this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
+			// 	json: true,
+			// 	headers: {
+			// 		"X-Requested-With": "XMLHttpRequest",
+
+			// 		"Content-Type": "application/atom+xml",
+
+			// 		"DataServiceVersion": "2.0",
+
+			// 		"X-CSRF-Token": "Fetch"
+
+			// 	}
+			// });
+			// console.log(this.odataService);
 			// this.odataService.disableHeadRequestForToken = true;
 			// this.odataService.setHeaders({
 			// 		"X-Requested-With": "XMLHttpRequest",
+
+			// 		"Content-Type": "application/atom+xml",
+
+			// 		"DataServiceVersion": "2.0",
+
 			// 		"X-CSRF-Token": "Fetch"
 
 			// 	}
 
 			// );
+			// console.log(X-CSRF-Token);
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("ServiceRequestCreation").attachMatched(this._onObjectMatched, this);
 		},
@@ -77,11 +97,36 @@ sap.ui.define([
 				// data.FaultCode = that.FaultCode;
 				// data.DateOfCreation = "";
 				// data.ServiceNumber = "";
-				this.odataService.create("/ServiceRequestSet", data, null, function (odata, response) {
 
-						var msg = "Service Request " + response.data.ServiceNumber + " Created Successfully";
-						that.getView().byId("issue").setValue("");
+				// http: //qnx-s4hana.quinnox.corp:8000/sap/opu/odata/sap/ZQNX_IOT_SRV/NotificationCreateSet(CustomerID='1000020',ModelId='Model2(1c8169af-cbdc-4202-950f-b233f2f5942d)',FaultCode='Z105',Issue='Water Filter Issue',Comment='testing Anna Bond')
+				this.odataService.read(
+					"/NotificationCreateSet(CustomerID='" + that.customerID + "',ModelId='" + that.deviceId + "',FaultCode='" + faultCode +
+					"',Issue='" + issue +
+					"',Comment='" + comments + "')",
+					null, null,
+					function (odata, response) {
+						console.log(response);
+						// MessageBox.success("Service Request Created", {
+						// 	title: "Success",
+						// 	Action: "OK",
+						// 	onClose: function (oAction) {
+						// 		if (oAction === sap.m.MessageBox.Action.OK) {
+						// 			// that.getOwnerComponent().getRouter().navTo("Main");
+						// 			var sPreviousHash = History.getInstance().getPreviousHash();
+						// 			if (sPreviousHash !== undefined) {
+						// 				history.go(-1);
+						// 			}
+						// 		}
+						// 	}
+
+						// });
+					},
+					function (response) {
+						console.log(response);
 						that.getView().byId("comments").setValue("");
+						var serviceRequestNumber = response.ServiceNumber;
+						var msg = "Service Request " + serviceRequestNumber + " Created Sucessfully";
+
 						MessageBox.success(msg, {
 							title: "Success",
 							Action: "OK",
@@ -96,17 +141,120 @@ sap.ui.define([
 							}
 
 						});
+					});
+				// this.odataService.create("/ServiceRequestSet", data, {
+				// 	headers: this.headers,
+				// 	success: function (odata, response) {response
 
-					},
-					function (odata, response) {
+				// 		var msg = "Service Request " + response.data.ServiceNumber + " Created Successfully";
+				// 		that.getView().byId("issue").setValue("");
+				// 		that.getView().byId("comments").setValue("");
+				// 		MessageBox.success(msg, {
+				// 			title: "Success",
+				// 			Action: "OK",
+				// 			onClose: function (oAction) {
+				// 				if (oAction === sap.m.MessageBox.Action.OK) {
+				// 					// that.getOwnerComponent().getRouter().navTo("Main");
+				// 					var sPreviousHash = History.getInstance().getPreviousHash();
+				// 					if (sPreviousHash !== undefined) {
+				// 						history.go(-1);
+				// 					}
+				// 				}
+				// 			}
 
-					}
-				);
+				// 		});
+
+				// 	},
+				// 	error: function (odata, response) {
+
+				// 	}
+				// });
+				//Tried New 1
+				// that.odataService.request({
+				// 		requestUri: "/ServiceRequestSet",
+				// 		method: "GET",
+				// 		headers: {
+				// 			"X-Requested-With": "XMLHttpRequest",
+				// 			"Content-Type": "application/atom+xml",
+				// 			"DataServiceVersion": "2.0",
+				// 			"x-csrf-token": "Fetch"
+				// 		}
+				// 	},
+				// 	function (insertedItem, response) {
+				// 		var header_xcsrf_token = response.headers['x-csrf-token'];
+				// 		var oHeaders = {
+				// 			"X-Requested-With": "XMLHttpRequest",
+				// 			"Content-Type": "application/atom+xml",
+				// 			"DataServiceVersion": "2.0",
+				// 			"x-csrf-token": header_xcsrf_token,
+				// 			"Access-Control-Allow-Origin": "*",
+				// 			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+				// 			"Accept": "application/json, application/atom+xml, application/atomsvc+xml "
+				// 		};
+				// 		that.odataService.request({
+				// 				requestUri: "/ServiceRequestSet",
+				// 				method: "POST",
+				// 				headers: oHeaders,
+				// 				data: data
+				// 			},
+				// 			function (data, response) {
+				// 				MessageBox.success("Hi");
+				// 				// SUCCESS
+				// 			},
+				// 			function (data, request) {
+				// 				MessageBox.error("Hello");
+				// 				// alert("error POST : " + data.response.body);
+
+				// 			},
+				// 			function () {
+
+				// 				// dialogBusy.close();
+				// 				// alert('error Get ');
+				// 			});
+				// 		// 		// Tried New 
+				// 		// $.ajax({
+				// 		// 	url: 'that.odataService/ServiceRequestSet',
+				// 		// 	type: "GET",
+				// 		// 	// Access-Control-Allow-Origin:"*",
+				// 		// 	// Access-Control-Allow-Methods: "GET,PUT,POST,DELETE,OPTIONS",
+				// 		// 	beforeSend: function (xhr) {
+				// 		// 		xhr.setRequestHeader("X-CSRF-Token", "Fetch");
+				// 		// 	},
+				// 		// 	complete: function (xhr) {
+				// 		// 		var token = xhr.getResponseHeader("X-CSRF-Token");
+				// 		// 		console.log(token);
+
+				// 		// 		$.ajax({
+				// 		// 			type: 'POST',
+				// 		// 			url: 'that.odataService/ServiceRequestSet',
+				// 		// 			dataType: "json",
+				// 		// 			data: JSON.stringify(data),
+				// 		// 			contentType: "application/json",
+				// 		// 			beforeSend: function (xhr) {
+				// 		// 				xhr.setRequestHeader('X-CSRF-Token', token);
+				// 		// 			},
+
+				// 		// 			success: function () {
+				// 		// 				MessageBox.success("Service Request Created Successfully");
+
+				// 		// 				// new sap.m.MessageToast.show();
+				// 		// 				// oDialogue.close();
+				// 		// 				// sap.ui.getCore().byId("myTable").getModel().refresh(true);
+				// 		// 			},
+				// 		// 			error: function () {
+				// 		// 				MessageBox.error("Error creating service request");
+				// 		// 				// new sap.m.MessageToast.show("Error while adding the Customer");
+				// 		// 				// oDialogue.close();
+				// 		// 			}
+				// 		// 		});
+
+				// 		// 	}
+				// 		// });
+
+				// 	});
 			} else {
 				MessageBox.information("Please enter all mandatory fields");
 			}
-			
-			
 
 		},
 		// comboboxChange: function (oEvent) {

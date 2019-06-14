@@ -2,7 +2,7 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"sap/ui/core/routing/History"
-], function (Controller,MessageBox,History) {
+], function (Controller, MessageBox, History) {
 	"use strict";
 
 	return Controller.extend("com.controller.FilterLife", {
@@ -12,46 +12,40 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.view.FilterLife
 		 */
-	onInit: function () {
+		onInit: function () {
 			this.result = {};
 			this.result.items = [];
 
-			this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			// this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
 
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("FilterLife").attachMatched(this._onObjectMatched, this);
 
 		},
-		
-		
-			_onObjectMatched: function (oEvent) {
+
+		_onObjectMatched: function (oEvent) {
 			var that = this;
 			//hello
 			var filterConsumed = oEvent.getParameter("arguments").FilterConsumed;
-			
+
 			var filterType = oEvent.getParameter("arguments").filterType;
 			var waterFiltered = oEvent.getParameter("arguments").waterFiltered;
 			this.getView().byId("idList").setNumber(filterConsumed);
 			this.getView().byId("id1").setText(filterType);
-			var waterfiltered1 = waterFiltered +" "+ "litres";
+			var waterfiltered1 = waterFiltered + " " + "litres";
 			this.getView().byId("id2").setText(waterfiltered1);
-			 
-			 if(filterConsumed>80){
-			 	this.getView().byId("id3").setText("Bad");
-			 	this.getView().byId("id3").setState(sap.ui.core.ValueState.Error);
-			 	
-			 }
-			else if(filterConsumed>50)
-			{
-			this.getView().byId("id3").setText("Average");
+
+			if (filterConsumed > 80) {
+				this.getView().byId("id3").setText("Bad");
+				this.getView().byId("id3").setState(sap.ui.core.ValueState.Error);
+
+			} else if (filterConsumed > 50) {
+				this.getView().byId("id3").setText("Average");
 				this.getView().byId("id3").setState(sap.ui.core.ValueState.Warning);
-			}
-			else
-			this.getView().byId("id3").setText("Good");
+			} else
+				this.getView().byId("id3").setText("Good");
 			this.getView().byId("id3").setState(sap.ui.core.ValueState.Success);
-			
-			
-			
+
 		},
 
 		// _onRouteMatched: function () {
@@ -72,21 +66,18 @@ sap.ui.define([
 		// },
 		onNavBack: function () {
 			var that = this;
-				var sPreviousHash = History.getInstance().getPreviousHash();
+			var sPreviousHash = History.getInstance().getPreviousHash();
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
 			} else {
 				this.getOwnerComponent().getRouter().navTo("Tile");
 			}
-			
-		
+
 			// this.getView().byId("id1").setText("");
 		},
-		onPress:function(){
+		onPress: function () {
 			this.getOwnerComponent().getRouter().navTo("RootView");
 		}
-
-
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
