@@ -1,8 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-		"sap/ui/iot/elements/IoTEventsOnChartElement",
-	"sap/ui/core/routing/History",
-], function (Controller,IoTEventsOnChart,History) {
+	"sap/ui/iot/elements/IoTEventsOnChartElement",
+	"sap/ui/core/routing/History"
+], function (Controller, IoTEventsOnChart, History) {
 	"use strict";
 
 	return Controller.extend("com.controller.TDSOutput", {
@@ -19,12 +19,10 @@ sap.ui.define([
 			oRouter.getRoute("TDSOutput").attachMatched(this._onRouteMatched, this);
 			var oModel = new sap.ui.model.json.JSONModel();
 			this.byId("idChart").setModel(oModel, "chartModel");
-			
-		
+
 		},
 		_onRouteMatched: function (oEvent) {
-	
-				
+
 			//Close the Busy Indicator and retrieve the arguments passed while routing
 			// sap.ui.getCore().byId("idBusy").close();
 			// sap.ui.getCore().sThingId = oEvent.getParameter("arguments").thingId;
@@ -56,14 +54,13 @@ sap.ui.define([
 				oChart.bNavFromEventList = false;
 				this._renderChart(oChart, sap.ui.getCore().sThingId);
 			}
-	
+
 		},
 
 		/** Render the events on Chart with the respective Measuring Point as the default PST **/
 		_renderEventsOnChart: function (oChart, eventsContext) {
-	
-		
-				oChart.setEventsVisible(true);
+
+			oChart.setEventsVisible(true);
 			var eventsArr = [];
 			if (eventsContext && eventsContext.getPath) {
 				var oData = eventsContext.getModel().getProperty(eventsContext.getPath()); //Set this to the this context so that it can be accessible everywhere
@@ -85,21 +82,19 @@ sap.ui.define([
 				oChart.setAssetId(sap.ui.getCore().sThingId);
 			}
 
-
 		},
 
 		_renderChart: function (oChart, sThingId) {
 			// Workaround as of now because onAfterRendering does not get called for the second time
-		
-			
-				if (!this.bRenderChart) {
+
+			if (!this.bRenderChart) {
 				oChart.setEventsVisible(false);
 				oChart.setAssetId(sap.ui.getCore().sThingId);
 			}
 		},
 
 		onAfterRendering: function () {
-				if (this.bRenderChart) {
+			if (this.bRenderChart) {
 				var oChart = this.byId("idChart");
 				this.bRenderChart = false;
 				if (this.eventsContext) {
@@ -109,7 +104,7 @@ sap.ui.define([
 				}
 				oChart.setAssetId(sap.ui.getCore().sThingId);
 			}
-		
+
 		},
 
 		handleNavBackPress: function () {
@@ -119,7 +114,7 @@ sap.ui.define([
 			}
 		},
 		onPressBack: function () {
-			var that = this;
+			//var that = this;
 			// that.getOwnerComponent().getRouter().navTo("WaterQuality");
 			var sHistory = History.getInstance();
 			var sPreviousHash = sHistory.getPreviousHash();
@@ -127,11 +122,13 @@ sap.ui.define([
 				window.history.go(-1);
 			}
 		},
-	
-			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("RootView");
-		}
 
+		onPress: function () {
+			var oRef = this;
+			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
+			sRouter.navTo("RootView");
+			//this.getOwnerComponent().getRouter().navTo("RootView");
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

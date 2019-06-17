@@ -76,7 +76,10 @@ sap.ui.define([
 			// this.getView().byId("id1").setText("");
 		},
 		onPress: function () {
-			this.getOwnerComponent().getRouter().navTo("RootView");
+			var oRef = this;
+			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
+			sRouter.navTo("RootView", null, true);
+			//this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 		/**

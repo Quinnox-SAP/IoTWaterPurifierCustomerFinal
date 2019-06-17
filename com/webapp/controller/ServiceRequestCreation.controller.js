@@ -105,7 +105,7 @@ sap.ui.define([
 					"',Comment='" + comments + "')",
 					null, null,
 					function (odata, response) {
-						console.log(response);
+						//console.log(response);
 						// MessageBox.success("Service Request Created", {
 						// 	title: "Success",
 						// 	Action: "OK",
@@ -122,7 +122,7 @@ sap.ui.define([
 						// });
 					},
 					function (response) {
-						console.log(response);
+						//console.log(response);
 						that.getView().byId("comments").setValue("");
 						var serviceRequestNumber = response.ServiceNumber;
 						var msg = "Service Request " + serviceRequestNumber + " Created Sucessfully";
@@ -279,7 +279,10 @@ sap.ui.define([
 
 		},
 		onPress: function () {
-			this.getOwnerComponent().getRouter().navTo("RootView");
+			var oRef = this;
+			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
+			sRouter.navTo("RootView");
+			//	this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 		/**

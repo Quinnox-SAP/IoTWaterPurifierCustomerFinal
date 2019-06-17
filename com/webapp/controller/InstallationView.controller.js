@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History",
-	"sap/m/MessageBox",
+	"sap/m/MessageBox"
 ], function (Controller, History, MessageBox) {
 	"use strict";
 
@@ -13,7 +13,9 @@ sap.ui.define([
 		 * @memberOf com.view.InstallationView
 		 */
 		onInit: function () {
-			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {json:true});
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
+				json: true
+			});
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.getRoute("InstallationView").attachMatched(this._onObjectMatched, this);
 			this.getView().byId("issue").setValue("Installation Request");
@@ -28,7 +30,7 @@ sap.ui.define([
 			this.odataService.read("/CustomerSet('" + mobileNumber + "')", null, null, false, function (
 				response) {
 				if (response.ValidPhoneNo === "Success") {
-					console.log(response);
+					//console.log(response);
 					that.getOwnerComponent().getModel("oCustomer").setData(response);
 					that.custId = response.BusinessPartner;
 					that.getOwnerComponent().getModel("oCustomer").refresh(true);
@@ -38,7 +40,10 @@ sap.ui.define([
 
 		},
 		onPress: function () {
-			this.getOwnerComponent().getRouter().navTo("RootView");
+			var oRef = this;
+			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
+			sRouter.navTo("RootView");
+			//this.getOwnerComponent().getRouter().navTo("RootView");
 		},
 		onSubmit: function () {
 			var that = this;

@@ -10,7 +10,9 @@ sap.ui.define([
 		onInit: function () {
 			this.result = {};
 			this.result.items = [];
-			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {json:true});
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
+				json: true
+			});
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("ServiceHistory").attachMatched(this._onObjectMatched, this);
@@ -102,8 +104,11 @@ sap.ui.define([
 			}
 
 		},
-			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("RootView");
+		onPress: function () {
+			var oRef = this;
+			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
+			sRouter.navTo("RootView");
+			//this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
 		/**

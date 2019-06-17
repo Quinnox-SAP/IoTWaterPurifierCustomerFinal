@@ -1,8 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-		"sap/m/MessageBox",
+	"sap/m/MessageBox",
 	"sap/ui/core/routing/History"
-], function (Controller,MessageBox,History) {
+], function (Controller, MessageBox, History) {
 	"use strict";
 
 	return Controller.extend("com.controller.Tile", {
@@ -23,7 +23,9 @@ sap.ui.define([
 			this.filterLife = "";
 
 			// this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
-			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {json:true});
+			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
+				json: true
+			});
 			// this.odataService = this.getView().getModel("ZQNX");
 			this.custId = "";
 			var oRouter = this.getOwnerComponent().getRouter();
@@ -45,7 +47,7 @@ sap.ui.define([
 			that.filterConsumed = ((that.waterFiltered / filterLife) * 100);
 			that.filterConsumed = Math.round(that.filterConsumed);
 			that.getView().byId("id3").setValue(that.filterConsumed);
-		
+
 			this.odataService.read("/CustomerSet('" + mobNum + "')", null, null, false, function (
 				response) {
 				if (response.ValidPhoneNo === "Success") {
@@ -124,7 +126,7 @@ sap.ui.define([
 				mpPath: oProperty
 			});
 		},
-			onFilterLifePress: function (evt) {
+		onFilterLifePress: function (evt) {
 			// var filterCapacity = 10000;
 			// var waterFiltered = 2500;
 			// var filterConsumed = ((waterFiltered / filterCapacity) * 100);
@@ -135,7 +137,7 @@ sap.ui.define([
 			// filterConsumed = Math.round(filterConsumed);
 			var that = this;
 			// that.getView().byId("id3").setValue(filterConsumed);
-		
+
 			that.getOwnerComponent().getRouter().navTo("FilterLife", {
 				FilterConsumed: that.filterConsumed,
 				filterType: that.filterType,
@@ -148,7 +150,7 @@ sap.ui.define([
 			var that = this;
 			that.getOwnerComponent().getRouter().navTo("ServiceHistory", {
 				customerID: that.custId,
-				deviceId: that.deviceId,
+				deviceId: that.deviceId
 			});
 			// var that = this;
 
@@ -163,12 +165,10 @@ sap.ui.define([
 		},
 		onServiceRequestPress: function () {
 			var that = this;
-		
 
 			this.getOwnerComponent().getRouter().navTo("ServiceRequestCreation", {
 				customerID: that.custId,
-				deviceId: that.deviceId,
-
+				deviceId: that.deviceId
 			});
 		},
 		onPressBack: function () {
@@ -183,11 +183,12 @@ sap.ui.define([
 			}
 
 		},
-			onPress:function(){
-			this.getOwnerComponent().getRouter().navTo("RootView");
-		}	
-
-		
+		onPress: function () {
+			var oRef = this;
+			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
+			sRouter.navTo("RootView");
+			//this.getOwnerComponent().getRouter().navTo("RootView");
+		}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
