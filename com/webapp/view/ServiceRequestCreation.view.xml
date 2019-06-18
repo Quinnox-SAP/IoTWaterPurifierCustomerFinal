@@ -52,7 +52,7 @@
 											<Label text="Comments" design="Bold" required="true"></Label>
 										</f:label>
 										<f:fields>
-											<Input type="Text" id="comments"></Input>
+											<Input type="Text" id="comments" maxLength="100"></Input>
 										</f:fields>
 									</f:FormElement>
 								</f:formElements>

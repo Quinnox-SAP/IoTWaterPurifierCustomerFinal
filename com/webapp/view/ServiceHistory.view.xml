@@ -16,6 +16,7 @@
 						numberUnit="{oserviceHistory>Status}">
 						<attributes>
 							<!--<ObjectAttribute title="Device Name"></ObjectAttribute>-->
+							<ObjectAttribute title="Comments by Customer" text="{oserviceHistory>Comment}"></ObjectAttribute>
 							<ObjectAttribute title="Fault Description" text="{oserviceHistory>FaultCodeDesc}"></ObjectAttribute>
 						</attributes>
 					</ObjectListItem>
