@@ -19,6 +19,18 @@
 							<ObjectAttribute title="Comments by Customer" text="{oserviceHistory>Comment}"></ObjectAttribute>
 							<ObjectAttribute title="Fault Description" text="{oserviceHistory>FaultCodeDesc}"></ObjectAttribute>
 						</attributes>
+						<firstStatus>
+							<ObjectStatus title="Assigned Technician" text="{oserviceHistory>TechnicianName}"></ObjectStatus>
+						</firstStatus>
+						<secondStatus>
+							<ObjectStatus title="Technician Mobile" text="{oserviceHistory>TechnicianPhone}"></ObjectStatus>
+						</secondStatus>
+						<!--<firstStatus>-->
+						<!--	<ObjectStatus title="Assigned Technician" text="{oserviceHistory>TechnicianName}"></ObjectStatus>-->
+						<!--</firstStatus>-->
+						<!--<secondStatus>-->
+						<!--	<ObjectStatus title="Technician Mobile" text="{oserviceHistory>TechnicianPhone}"></ObjectStatus>-->
+						<!--</secondStatus>-->
 					</ObjectListItem>
 				</items>
 			</List>

@@ -85,6 +85,8 @@ sap.ui.define([
 					faultCode = "Z527";
 				} else if (issue === "Low Water Flow") {
 					faultCode = "Z528";
+				} else if (issue === "Others") {
+					faultCode = "Z530";
 				}
 				var data = {};
 				data.Issue = issue;

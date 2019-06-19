@@ -44,6 +44,7 @@
 												<core:ListItem text="Unit not Working"/>
 												<core:ListItem text="VC-Burning Smell"/>
 												<core:ListItem text="Low Water Flow"/>
+												<core:ListItem text="Others"/>
 											</Select>
 										</f:fields>
 									</f:FormElement>
