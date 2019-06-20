@@ -24,6 +24,11 @@
 						</TileContent>
 					</GenericTile>
 					<GenericTile header="Service History" class="sapUiTinyMargin" press="onServiceHistoryPress">
+						<TileContent footer="{oCustomer>/LatestSRDate}" unit="Created on">
+							<content>
+								<NewsContent contentText="Service Request No." subheader="{oCustomer>/LatestSR}"></NewsContent>
+							</content>
+						</TileContent>
 						<!--<TileContent footer="{oCustomer>/Status}" unit="{i18n>Status}">-->
 						<!--<content>-->
 						<!--	<NewsContent contentText="{i18n>ServiceDue}" subheader="{oCustomer>/ServiceDueDate}"></NewsContent>-->

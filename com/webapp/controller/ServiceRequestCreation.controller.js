@@ -127,7 +127,10 @@ sap.ui.define([
 						//console.log(response);
 						that.getView().byId("comments").setValue("");
 						var serviceRequestNumber = response.ServiceNumber;
-						var msg = "Service Request " + serviceRequestNumber + " Created Sucessfully";
+						var TechnicianPhone = response.TechnicianPhone;
+						var TechnicianName = response.TechnicianName;
+						var msg = "Service Request " + serviceRequestNumber + " Created Sucessfully.Technician Name-" + TechnicianName +
+							" and Mobile-" + TechnicianPhone;
 
 						MessageBox.success(msg, {
 							title: "Success",
