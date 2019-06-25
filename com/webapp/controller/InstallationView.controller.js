@@ -42,7 +42,7 @@ sap.ui.define([
 		onPress: function () {
 			var oRef = this;
 			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
-			sRouter.navTo("RootView");
+			sRouter.navTo("RootView", null, true);
 			//this.getOwnerComponent().getRouter().navTo("RootView");
 		},
 		onSubmit: function () {

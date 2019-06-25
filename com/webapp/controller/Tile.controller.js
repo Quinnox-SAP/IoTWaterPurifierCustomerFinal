@@ -179,14 +179,14 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
 			} else {
-				this.getOwnerComponent().getRouter().navTo("Main");
+				this.getOwnerComponent().getRouter().navTo("Main", null, true);
 			}
 
 		},
 		onPress: function () {
 			var oRef = this;
 			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
-			sRouter.navTo("RootView");
+			sRouter.navTo("RootView", null, true);
 			//this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 
