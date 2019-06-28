@@ -24,9 +24,22 @@ sap.ui.define([
 			var aFilters = [];
 			var sQuery = "";
 			if (sQuery && sQuery.length > 0) {
-				var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
-				aFilters.push(filter);
+				//			var filter = new Filter("NotiNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+				var filter = [
+					new sap.ui.model.Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("DateOfCreation", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("Comment", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("FaultCodeDesc", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("TechnicianName", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("TechnicianPhone", sap.ui.model.FilterOperator.Contains, sQuery)
+				];
+				aFilters = new sap.ui.model.Filter(filter, false);
+				//	aFilters.push(filter);
 			}
+			// if (sQuery && sQuery.length > 0) {
+			// 	var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+			// 	aFilters.push(filter);
+			// }
 
 			// update list binding
 			var list = this.byId("idList");
@@ -49,9 +62,22 @@ sap.ui.define([
 			var aFilters = [];
 			var sQuery = oEvt.getSource().getValue();
 			if (sQuery && sQuery.length > 0) {
-				var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
-				aFilters.push(filter);
+				//			var filter = new Filter("NotiNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+				var filter = [
+					new sap.ui.model.Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("DateOfCreation", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("Comment", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("FaultCodeDesc", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("TechnicianName", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("TechnicianPhone", sap.ui.model.FilterOperator.Contains, sQuery)
+				];
+				aFilters = new sap.ui.model.Filter(filter, false);
+				//	aFilters.push(filter);
 			}
+			// if (sQuery && sQuery.length > 0) {
+			// 	var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+			// 	aFilters.push(filter);
+			// }
 
 			// update list binding
 			var list = this.byId("idList");
@@ -87,9 +113,22 @@ sap.ui.define([
 			var aFilters = [];
 			var sQuery = "";
 			if (sQuery && sQuery.length > 0) {
-				var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
-				aFilters.push(filter);
+				//			var filter = new Filter("NotiNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+				var filter = [
+					new sap.ui.model.Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("DateOfCreation", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("Comment", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("FaultCodeDesc", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("TechnicianName", sap.ui.model.FilterOperator.Contains, sQuery),
+					new sap.ui.model.Filter("TechnicianPhone", sap.ui.model.FilterOperator.Contains, sQuery)
+				];
+				aFilters = new sap.ui.model.Filter(filter, false);
+				//	aFilters.push(filter);
 			}
+			// if (sQuery && sQuery.length > 0) {
+			// 	var filter = new Filter("ServiceNumber", sap.ui.model.FilterOperator.Contains, sQuery);
+			// 	aFilters.push(filter);
+			// }
 
 			// update list binding
 			var list = this.byId("idList");
@@ -107,7 +146,7 @@ sap.ui.define([
 		onPress: function () {
 			var oRef = this;
 			var sRouter = sap.ui.core.UIComponent.getRouterFor(oRef);
-			sRouter.navTo("RootView",null,true);
+			sRouter.navTo("RootView", null, true);
 			//this.getOwnerComponent().getRouter().navTo("RootView");
 		}
 

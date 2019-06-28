@@ -32,7 +32,7 @@
 					<VBox alignContent="Center" alignItems="Center" height="100%" width="100%" justifyContent="Center">
 						<f:Avatar src="" initials="" displayShape="Circle" displaySize="M" imageFitType="Cover" class="sapUiTinyMargin"/>
 						<Label text="Please Enter Your Mobile No"></Label>
-						<Input id="idnum" type="Text" maxLength="10"></Input>
+						<Input id="idnum" type="Text" maxLength="10" submit="onEnterPress"></Input>
 						<Button text="Login" press="onSubmit" icon="sap-icon://employee-approvals"></Button>
 					</VBox>
 				</content>

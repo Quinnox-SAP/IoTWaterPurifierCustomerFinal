@@ -85,6 +85,34 @@ sap.ui.define([
 			// }
 
 		},
+
+		onEnterPress: function (oEvent) {
+			var that = this;
+			this.mobNum = that.getView().byId("idnum").getValue();
+
+			sap.ui.getCore().sThingId = sap.ui.getCore().thingId1;
+			// // this.sThingId = sap.ui.getCore().thingId2;
+			// this.sThingId = sap.ui.getCore().thingId3;
+
+			// sap.ui.getCore().thingId = "AE79A8A09BEF4EF8BF14C1ADA78EB031";
+			// sap.ui.getCore().TDSthingId = "1B12D81C646A4AA5ACCBDF59EF5F5B7E";
+			// var sThingType = "iot.quinnoxiotcf.iotpackage:pHOutputThingType";
+			var oDetailsThingModel = this._findThingModel(sap.ui.getCore().thing1Type);
+			if (oDetailsThingModel) {
+				// this._readDetailsService(oDetailsThingModel, this.sThingId);
+				this._readDetailsService(oDetailsThingModel, sap.ui.getCore().sThingId);
+			} else {
+				var sURL = "/IOTAS-DETAILS-THING-ODATA/CompositeThings/ThingType/v1/" + sap.ui.getCore().thing1Type;
+				var oNewThingTypeModel = new sap.ui.model.odata.ODataModel(sURL);
+				// this._readDetailsService(oNewThingTypeModel, this.sThingId);
+				this._readDetailsService(oNewThingTypeModel, sap.ui.getCore().sThingId);
+			}
+			// if (sap.ui.getCore().validationFlag === "B") {
+			// 	this.callThing2Validation(sap.ui.getCore().thingId2);
+			// }
+
+		},
+
 		_readDetailsService: function (oDetailsModel, sThingId) {
 			var that = this;
 			var mobileNum = that.getView().byId("idnum").getValue();
