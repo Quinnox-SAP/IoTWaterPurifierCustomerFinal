@@ -10,7 +10,7 @@
 			<Toolbar class="sapUiMediumMarginTop" id="toolbar1">
 				<Label id="id1" design="Bold"></Label>
 			</Toolbar>
-			<List id="idList" mode="SingleSelectMaster" items="{oserviceHistory>/results}">
+			<List id="idList" mode="None" items="{oserviceHistory>/results}">
 				<items>
 					<ObjectListItem intro="Service Request No" title="{oserviceHistory>ServiceNumber}" number="{oserviceHistory>DateOfCreation}"
 						numberUnit="{oserviceHistory>Status}">
