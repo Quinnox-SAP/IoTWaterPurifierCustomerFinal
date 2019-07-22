@@ -1,78 +1,78 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.controller.ServiceRequestCreation"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form">
-	<App>
-		<pages>
-			<Page title="Service Request Creation" navButtonPress="onNavBack">
-				<headerContent>
-					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
-				</headerContent>
+	<!--<App>-->
+	<!--	<pages>-->
+	<Page title="Service Request Creation" navButtonPress="onNavBack">
+		<!--<headerContent>-->
+		<!--	<Button icon="sap-icon://log" press="onPress" type="Reject"/>-->
+		<!--</headerContent>-->
+		<content>
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Please enter the details"/>
+				</f:title>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="Issue" design="Bold" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<!--<ComboBox id="issue" filterSecondaryValues="true">-->
+									<!--	<core:ListItem text="Water Filter Issue"/>-->
+									<!--	<core:ListItem text="Carbon Filter Issue"/>-->
+									<!--	<core:ListItem text="RE Loose Connections"/>-->
+									<!--	<core:ListItem text="No Water"/>-->
+									<!--	<core:ListItem text="Water Not Clear"/>-->
+									<!--	<core:ListItem text="Smell in Water"/>-->
+									<!--	<core:ListItem text="Unit giving Shock"/>-->
+									<!--	<core:ListItem text="No Green Light"/>-->
+									<!--	<core:ListItem text="Unit not Working"/>-->
+									<!--	<core:ListItem text="VC-Burning Smell"/>-->
+									<!--	<core:ListItem text="Low Water Flow"/>-->
+									<!--</ComboBox>-->
+									<Select id="issue" forceSelection="true">
+										<core:ListItem text="Water Filter Issue"/>
+										<core:ListItem text="Carbon Filter Issue"/>
+										<core:ListItem text="RE Loose Connections"/>
+										<core:ListItem text="No Water"/>
+										<core:ListItem text="Water Not Clear"/>
+										<core:ListItem text="Smell in Water"/>
+										<core:ListItem text="Unit giving Shock"/>
+										<core:ListItem text="No Green Light"/>
+										<core:ListItem text="Unit not Working"/>
+										<core:ListItem text="VC-Burning Smell"/>
+										<core:ListItem text="Low Water Flow"/>
+										<core:ListItem text="Others"/>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="Comments" design="Bold" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input type="Text" id="comments" maxLength="100"></Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+				<f:layout>
+					<f:ResponsiveGridLayout columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</f:layout>
+			</f:Form>
+		</content>
+		<footer>
+			<Toolbar>
 				<content>
-					<f:Form editable="true">
-						<f:title>
-							<core:Title text="Please enter the details"/>
-						</f:title>
-						<f:formContainers>
-							<f:FormContainer>
-								<f:formElements>
-									<f:FormElement>
-										<f:label>
-											<Label text="Issue" design="Bold" required="true"></Label>
-										</f:label>
-										<f:fields>
-											<!--<ComboBox id="issue" filterSecondaryValues="true">-->
-											<!--	<core:ListItem text="Water Filter Issue"/>-->
-											<!--	<core:ListItem text="Carbon Filter Issue"/>-->
-											<!--	<core:ListItem text="RE Loose Connections"/>-->
-											<!--	<core:ListItem text="No Water"/>-->
-											<!--	<core:ListItem text="Water Not Clear"/>-->
-											<!--	<core:ListItem text="Smell in Water"/>-->
-											<!--	<core:ListItem text="Unit giving Shock"/>-->
-											<!--	<core:ListItem text="No Green Light"/>-->
-											<!--	<core:ListItem text="Unit not Working"/>-->
-											<!--	<core:ListItem text="VC-Burning Smell"/>-->
-											<!--	<core:ListItem text="Low Water Flow"/>-->
-											<!--</ComboBox>-->
-											<Select id="issue" forceSelection="true">
-												<core:ListItem text="Water Filter Issue"/>
-												<core:ListItem text="Carbon Filter Issue"/>
-												<core:ListItem text="RE Loose Connections"/>
-												<core:ListItem text="No Water"/>
-												<core:ListItem text="Water Not Clear"/>
-												<core:ListItem text="Smell in Water"/>
-												<core:ListItem text="Unit giving Shock"/>
-												<core:ListItem text="No Green Light"/>
-												<core:ListItem text="Unit not Working"/>
-												<core:ListItem text="VC-Burning Smell"/>
-												<core:ListItem text="Low Water Flow"/>
-												<core:ListItem text="Others"/>
-											</Select>
-										</f:fields>
-									</f:FormElement>
-									<f:FormElement>
-										<f:label>
-											<Label text="Comments" design="Bold" required="true"></Label>
-										</f:label>
-										<f:fields>
-											<Input type="Text" id="comments" maxLength="100"></Input>
-										</f:fields>
-									</f:FormElement>
-								</f:formElements>
-							</f:FormContainer>
-						</f:formContainers>
-						<f:layout>
-							<f:ResponsiveGridLayout columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-						</f:layout>
-					</f:Form>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Save" type="Accept" press="onSubmitDialog"></Button>
 				</content>
-				<footer>
-					<Toolbar>
-						<content>
-							<ToolbarSpacer></ToolbarSpacer>
-							<Button text="Save" type="Accept" press="onSubmitDialog"></Button>
-						</content>
-					</Toolbar>
-				</footer>
-			</Page>
-		</pages>
-	</App>
+			</Toolbar>
+		</footer>
+	</Page>
+	<!--	</pages>-->
+	<!--</App>-->
 </mvc:View>

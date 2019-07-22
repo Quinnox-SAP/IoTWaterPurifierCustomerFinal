@@ -24,7 +24,7 @@ sap.ui.define([
 		},
 
 		_onObjectMatched: function (oEvent) {
-			var that = this;
+			//	var that = this;
 			//hello
 			var filterConsumed = oEvent.getParameter("arguments").FilterConsumed;
 
@@ -65,13 +65,13 @@ sap.ui.define([
 		// 	}
 		// },
 		onNavBack: function () {
-			var that = this;
-			var sPreviousHash = History.getInstance().getPreviousHash();
-			if (sPreviousHash !== undefined) {
-				history.go(-1);
-			} else {
-				this.getOwnerComponent().getRouter().navTo("Tile");
-			}
+			//	var that = this;
+			// var sPreviousHash = History.getInstance().getPreviousHash();
+			// if (sPreviousHash !== undefined) {
+			// 	history.go(-1);
+			// } else {
+			this.getOwnerComponent().getRouter().navTo("Tile");
+			// }
 
 			// this.getView().byId("id1").setText("");
 		},

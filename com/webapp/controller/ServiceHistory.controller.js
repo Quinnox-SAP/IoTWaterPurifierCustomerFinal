@@ -134,7 +134,7 @@ sap.ui.define([
 			var list = this.byId("idList");
 			var binding = list.getBinding("items");
 			binding.filter(aFilters);
-			var that = this;
+			//	var that = this;
 			var sPreviousHash = History.getInstance().getPreviousHash();
 			if (sPreviousHash !== undefined) {
 				history.go(-1);

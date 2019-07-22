@@ -26,8 +26,9 @@ sap.ui.define([
 			that.deviceId = oEvent.getParameter("arguments").deviceId;
 			that.FaultCode = oEvent.getParameter("arguments").FaultCode;
 			that.mobileNum = oEvent.getParameter("arguments").mobileNum;
-			var mobileNumber = that.mobileNum;
-			this.odataService.read("/CustomerSet('" + mobileNumber + "')", null, null, false, function (
+			//var mobileNumber = that.mobileNum;
+			//this.odataService.read("/CustomerSet('" + mobileNumber + "')", null, null, false, function (
+			this.odataService.read("/CustomerSet('9972594080')", null, null, false, function (
 				response) {
 				if (response.ValidPhoneNo === "Success") {
 					//console.log(response);

@@ -1,43 +1,43 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.controller.Tile"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<App>
-		<pages>
-			<Page title="Welcome, {oCustomer>/Name}" navButtonPress="onPressBack">
-				<headerContent>
-					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
-				</headerContent>
-				<content>
-					<GenericTile header="Water Quality" subheader="Water Consumed/Day" class="sapUiTinyMargin" press="onWaterQualityPress">
-						<!--<GenericTile header="{i18n>WaterQuality}" class="sapUiTinyMargin" press="onWaterQualityPress">-->
-						<TileContent unit="Litres">
-							<content>
-								<NumericContent id="id1"></NumericContent>
-							</content>
-						</TileContent>
-					</GenericTile>
-					<!--<GenericTile header="{i18n>FilterLife}" subheader="Replace UV Membrane" class="sapUiTinyMargin" press="onFilterLifePress">-->
-					<GenericTile header="Filter Life" class="sapUiTinyMargin" press="onFilterLifePress">
-						<TileContent footer="consumed" unit="%">
-							<content>
-								<NumericContent id="id3" truncateValueTo="10"></NumericContent>
-							</content>
-						</TileContent>
-					</GenericTile>
-					<GenericTile header="Service History" class="sapUiTinyMargin" press="onServiceHistoryPress">
-						<TileContent footer="{oCustomer>/LatestSRDate}" unit="Created on">
-							<content>
-								<NewsContent contentText="Service Request No." subheader="{oCustomer>/LatestSR}"></NewsContent>
-							</content>
-						</TileContent>
-						<!--<TileContent footer="{oCustomer>/Status}" unit="{i18n>Status}">-->
-						<!--<content>-->
-						<!--	<NewsContent contentText="{i18n>ServiceDue}" subheader="{oCustomer>/ServiceDueDate}"></NewsContent>-->
-						<!--</content>-->
-						<!--</TileContent>-->
-					</GenericTile>
-					<GenericTile header="Service Request Creation" class="sapUiTinyMargin" press="onServiceRequestPress"></GenericTile>
-				</content>
-			</Page>
-		</pages>
-	</App>
+	<!--<App id="idAppControl">-->
+	<!--	<pages>-->
+	<Page title="Welcome, {oCustomer>/Name}" navButtonPress="onPressBack">
+		<!--<headerContent>-->
+		<!--	<Button icon="sap-icon://log" press="onPress" type="Reject"/>-->
+		<!--</headerContent>-->
+		<content>
+			<GenericTile header="Water Quality" subheader="Water Consumed/Day" class="sapUiTinyMargin" press="onWaterQualityPress">
+				<!--<GenericTile header="{i18n>WaterQuality}" class="sapUiTinyMargin" press="onWaterQualityPress">-->
+				<TileContent unit="Litres">
+					<content>
+						<NumericContent id="id1"></NumericContent>
+					</content>
+				</TileContent>
+			</GenericTile>
+			<!--<GenericTile header="{i18n>FilterLife}" subheader="Replace UV Membrane" class="sapUiTinyMargin" press="onFilterLifePress">-->
+			<GenericTile header="Filter Life" class="sapUiTinyMargin" press="onFilterLifePress">
+				<TileContent footer="consumed" unit="%">
+					<content>
+						<NumericContent id="id3" truncateValueTo="10"></NumericContent>
+					</content>
+				</TileContent>
+			</GenericTile>
+			<GenericTile header="Service History" class="sapUiTinyMargin" press="onServiceHistoryPress">
+				<TileContent footer="{oCustomer>/LatestSRDate}" unit="Created on">
+					<content>
+						<NewsContent contentText="Service Request No." subheader="{oCustomer>/LatestSR}"></NewsContent>
+					</content>
+				</TileContent>
+				<!--<TileContent footer="{oCustomer>/Status}" unit="{i18n>Status}">-->
+				<!--<content>-->
+				<!--	<NewsContent contentText="{i18n>ServiceDue}" subheader="{oCustomer>/ServiceDueDate}"></NewsContent>-->
+				<!--</content>-->
+				<!--</TileContent>-->
+			</GenericTile>
+			<GenericTile header="Service Request Creation" class="sapUiTinyMargin" press="onServiceRequestPress"></GenericTile>
+		</content>
+	</Page>
+	<!--	</pages>-->
+	<!--</App>-->
 </mvc:View>

@@ -22,57 +22,265 @@ sap.ui.define([
 			this.waterFiltered = ""; //to be passed to next screen
 			this.filterLife = "";
 
-			// this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
+			//	this.odataService = new sap.ui.model.odata.ODataModel("/sap/opu/odata/sap/ZQNX_IOT_SRV/", true);
 			this.odataService = new sap.ui.model.odata.ODataModel("/IotWaterPurifier", {
 				json: true
 			});
 			// this.odataService = this.getView().getModel("ZQNX");
 			this.custId = "";
-			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute("Tile").attachMatched(this._onObjectMatched, this);
+			var oModel = new sap.ui.model.json.JSONModel();
+			this.getView().setModel(oModel, "thingPageModel");
 
-		},
+			var oModel1 = new sap.ui.model.json.JSONModel();
+			this.getView().setModel(oModel1, "Data");
 
-		_onObjectMatched: function (oEvent) {
-			var that = this;
-			that.deviceId = oEvent.getParameter("arguments").deviceId;
-			that.FaultCode = oEvent.getParameter("arguments").FaultCode;
-			var filterLife = oEvent.getParameter("arguments").filterLife;
-			that.filterType = oEvent.getParameter("arguments").filterType;
-			var waterConsumption = oEvent.getParameter("arguments").waterConsumption;
-			that.waterFiltered = oEvent.getParameter("arguments").waterFiltered;
-			var mobNum = oEvent.getParameter("arguments").mobileNum;
-			// var filterConsumed = ((waterFiltered / filterLife) * 100);
-			// filterConsumed = Math.round(filterConsumed);
-			that.filterConsumed = ((that.waterFiltered / filterLife) * 100);
-			that.filterConsumed = Math.round(that.filterConsumed);
-			that.getView().byId("id3").setValue(that.filterConsumed);
+			var oCustomerModel = new sap.ui.model.json.JSONModel();
+			this.getView().setModel(oCustomerModel, "oCustomer");
 
-			this.odataService.read("/CustomerSet('" + mobNum + "')", null, null, false, function (
+			// this.getView().addEventDelegate({
+			// 	onBeforeShow: jQuery.proxy(function (evt) {
+			// 		this.onBeforeShow(evt);
+			// 	}, this)
+			// });
+			var oRef = this;
+			this.odataService.read("/CustomerSet('9972594080')", null, null, false, function (
 				response) {
 				if (response.ValidPhoneNo === "Success") {
-					that.getOwnerComponent().getModel("oCustomer").setData(response);
+					oRef.getView().getModel("oCustomer").setData(response);
 					//sap.ui.getCore().custId = response.BusinessPartner;
-					that.custId = response.BusinessPartner;
-					that.getOwnerComponent().getModel("oCustomer").refresh(true);
+					oRef.custId = response.BusinessPartner;
+					oRef.getView().getModel("oCustomer").refresh(true);
 					// that.getOwnerComponent().getRouter().navTo("RouteHome");
 				} else {
 
 					MessageBox.error("Enter a valid phone number");
-					that.getView().byId("idnum").setValue("");
+					//that.getView().byId("idnum").setValue("");
 				}
-				that.getOwnerComponent().getModel("oCustomer").refresh(true);
+				oRef.getView().getModel("oCustomer").refresh(true);
 			});
-			// var waterConsumption = sap.ui.getCore().waterConsumption;
-			this.getView().byId("id1").setValue(waterConsumption);
+			this.odataServiceIoT = new sap.ui.model.odata.ODataModel("/IOTAS-ADVANCEDLIST-THING-ODATA/CompositeThings/v1/", true);
+			this.odataServiceIoT.read("/Things", null, null, false, function (response) {
+				// console.log(response);
+				var i = 0;
+				for (i = 0; i < response.results.length; i++) {
+					if (response.results[i].ThingDescription === "IoT Thing for Customer 1000020") {
+						sap.ui.getCore().thingId1 = response.results[i].ThingId;
+						sap.ui.getCore().thing1Type = response.results[i].ThingType;
+					}
+					if (response.results[i].ThingDescription === "Model 2 thing") {
+						sap.ui.getCore().thingId2 = response.results[i].ThingId;
+						sap.ui.getCore().thing1Type = response.results[i].ThingType;
+					}
+					if (response.results[i].ThingDescription === "Model 3 Thing") {
+						sap.ui.getCore().thingId3 = response.results[i].ThingId;
+						sap.ui.getCore().thing1Type = response.results[i].ThingType;
+					}
 
-			//FilterType
-			// var filterType = sap.ui.getCore().filterType;
-			//   this.getView().byId("id2").setText(filterType);
+				}
+			});
+			sap.ui.getCore().sThingId = sap.ui.getCore().thingId2;
+			var oDetailsThingModel = oRef._findThingModel(sap.ui.getCore().thing1Type);
+			if (oDetailsThingModel) {
+				// this._readDetailsService(oDetailsThingModel, this.sThingId);
+				oRef._readDetailsService(oDetailsThingModel, sap.ui.getCore().sThingId);
+			} else {
+				var sURL = "/IOTAS-DETAILS-THING-ODATA/CompositeThings/ThingType/v1/" + sap.ui.getCore().thing1Type;
+				var oNewThingTypeModel = new sap.ui.model.odata.ODataModel(sURL);
+				// this._readDetailsService(oNewThingTypeModel, this.sThingId);
+				oRef._readDetailsService(oNewThingTypeModel, sap.ui.getCore().sThingId);
+			}
+			// var oRouter = this.getOwnerComponent().getRouter();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.getRoute("Tile").attachMatched(this._onObjectMatched, this);
 
-			//FilterLife
-			// var filterLife = sap.ui.getCore().filterLife;
-			// this.getView().byId("id3").setValue(filterLife);
+		},
+		// onBeforeShow: function (oEvent) {
+		// 	this.odataServiceIoT = new sap.ui.model.odata.ODataModel("/IOTAS-ADVANCEDLIST-THING-ODATA/CompositeThings/v1/", true);
+		// 	this.odataServiceIoT.read("/Things", null, null, false, function (response) {
+		// 		// console.log(response);
+		// 		var i = 0;
+		// 		for (i = 0; i < response.results.length; i++) {
+		// 			if (response.results[i].ThingDescription === "IoT Thing for Customer 1000020") {
+		// 				sap.ui.getCore().thingId1 = response.results[i].ThingId;
+		// 				sap.ui.getCore().thing1Type = response.results[i].ThingType;
+		// 			}
+		// 			if (response.results[i].ThingDescription === "Model 2 thing") {
+		// 				sap.ui.getCore().thingId2 = response.results[i].ThingId;
+		// 				sap.ui.getCore().thing1Type = response.results[i].ThingType;
+		// 			}
+		// 			if (response.results[i].ThingDescription === "Model 3 Thing") {
+		// 				sap.ui.getCore().thingId3 = response.results[i].ThingId;
+		// 				sap.ui.getCore().thing1Type = response.results[i].ThingType;
+		// 			}
+
+		// 		}
+		// 	});
+		// 	sap.ui.getCore().sThingId = sap.ui.getCore().thingId2;
+		// 	var oDetailsThingModel = this._findThingModel(sap.ui.getCore().thing1Type);
+		// 	if (oDetailsThingModel) {
+		// 		// this._readDetailsService(oDetailsThingModel, this.sThingId);
+		// 		this._readDetailsService(oDetailsThingModel, sap.ui.getCore().sThingId);
+		// 	} else {
+		// 		var sURL = "/IOTAS-DETAILS-THING-ODATA/CompositeThings/ThingType/v1/" + sap.ui.getCore().thing1Type;
+		// 		var oNewThingTypeModel = new sap.ui.model.odata.ODataModel(sURL);
+		// 		// this._readDetailsService(oNewThingTypeModel, this.sThingId);
+		// 		this._readDetailsService(oNewThingTypeModel, sap.ui.getCore().sThingId);
+		// 	}
+		// },
+		_readDetailsService: function (oDetailsModel, sThingId) {
+			var that = this;
+			//	var mobileNum = that.getView().byId("idnum").getValue();
+			// this.odataService.read("/CustomerSet('" + mobileNum + "')", null, null, false, function (
+			// 	response) {
+			// 	if (response.ValidPhoneNo === "Success") {
+			// 		that.getOwnerComponent().getModel("oCustomer").setData(response);
+			// 		sap.ui.getCore().custId = response.BusinessPartner;
+			// 		that.getOwnerComponent().getModel("oCustomer").refresh(true);
+			// 		that.getOwnerComponent().getRouter().navTo("RouteHome");
+			// 	}
+			// });
+			oDetailsModel.read("/Things('" + sThingId + "')", {
+				urlParameters: {
+					"$expand": "DYN_ENT_iot_quinnoxiotcf_iot_new_package__DefaultImagePropertySet,DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020"
+				},
+				success: function (oData) {
+					var customerPhoneNumber = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Customer_Phone_number"];
+					sap.ui.getCore().CustMobNo = customerPhoneNumber;
+					// if (mobileNum === customerPhoneNumber) {
+					sap.ui.getCore().validationFlag = "A";
+					sap.ui.getCore().deviceId = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Device_ID"];
+					sap.ui.getCore().deviceStatus = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Device_Status"];
+					sap.ui.getCore().faultCode = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Fault_code"];
+					// that.faultCode = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+					// 	"Device_IoT_1000020.Fault_code"];
+
+					sap.ui.getCore().filterLife = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Filter_Life"];
+					sap.ui.getCore().filterType = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Filter_Type"];
+					sap.ui.getCore().tdsInput = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.TDS_Input"];
+					sap.ui.getCore().tdsOutput = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.TDS_Output"];
+					sap.ui.getCore().waterConsumption = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Water_Consumption"];
+					sap.ui.getCore().waterFiltered = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.Water_Filtered"];
+					sap.ui.getCore().pHInput = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.pH_Input"];
+					sap.ui.getCore().pHOutput = oData.DYN_ENT_iot_quinnoxiotcf_iot_new_package__Device_IoT_1000020[
+						"Device_IoT_1000020.pH_Output"];
+					//that.getView().byId("idnum").setValue("");
+					//navigation code: Pass parameters in manfiest
+					// that.getOwnerComponent().getRouter().navTo("Tile");
+					//that.readODataService(mobileNum);
+					// that.getOwnerComponent().getRouter().navTo("Tile", {
+					// 	deviceId: sap.ui.getCore().deviceId,
+					// 	FaultCode: sap.ui.getCore().faultCode,
+					// 	filterLife: sap.ui.getCore().filterLife,
+					// 	waterConsumption: sap.ui.getCore().waterConsumption,
+					// 	waterFiltered: sap.ui.getCore().waterFiltered,
+					// 	mobileNum: that.mobNum,
+					// 	filterType: sap.ui.getCore().filterType,
+					// });
+
+					// } 
+					// else {
+					// 	sap.ui.getCore().validationFlag = "B";
+					// 	that.callThing2Validation(sap.ui.getCore().thingId2);
+					// }
+					// that.waterFiltered = sap.ui.getCore().waterFiltered;
+					// filterLife = sap.ui.getCore().filterLife;
+					// that.filterConsumed = ((that.waterFiltered / filterLife) * 100);
+					sap.ui.getCore().filterConsumed = ((sap.ui.getCore().waterFiltered / sap.ui.getCore().filterLife) * 100);
+					sap.ui.getCore().filterConsumed = Math.round(sap.ui.getCore().filterConsumed);
+
+					that.getView().byId("id3").setValue(sap.ui.getCore().filterConsumed);
+
+					//this.odataService.read("/CustomerSet('" + mobNum + "')", null, null, false, function (
+					// this.odataService.read("/CustomerSet('9972594080')", null, null, false, function (
+					// 	response) {
+					// 	if (response.ValidPhoneNo === "Success") {
+					// 		that.getOwnerComponent().getModel("oCustomer").setData(response);
+					// 		//sap.ui.getCore().custId = response.BusinessPartner;
+					// 		that.custId = response.BusinessPartner;
+					// 		that.getOwnerComponent().getModel("oCustomer").refresh(true);
+					// 		// that.getOwnerComponent().getRouter().navTo("RouteHome");
+					// 	} else {
+
+					// 		MessageBox.error("Enter a valid phone number");
+					// 		//that.getView().byId("idnum").setValue("");
+					// 	}
+					// 	that.getOwnerComponent().getModel("oCustomer").refresh(true);
+					// });
+					// var waterConsumption = sap.ui.getCore().waterConsumption;
+					that.getView().byId("id1").setValue(sap.ui.getCore().waterConsumption);
+
+				},
+				error: function (oError) {
+					jQuery.sap.log.error(oError);
+					sap.ui.getCore().byId("idBusy").close();
+				}
+			});
+
+		},
+		_findThingModel: function (sThingType) {
+			//Create a loop and just check how many thingModels are created and break if there is no thingModel
+			for (var i = 1; i < 100; i++) {
+				if (this.getOwnerComponent().getModel("thingModel" + i)) {
+					//Compare the thingType with the thingModel thingtype , if it matches then return that thingModel
+					var sServiceURL = this.getOwnerComponent().getModel("thingModel" + i).sServiceUrl;
+					var matchedThingType = sServiceURL.substring(sServiceURL.lastIndexOf("/") + 1);
+					if (sThingType === matchedThingType) {
+						return this.getOwnerComponent().getModel("thingModel" + i);
+					}
+				} else {
+					jQuery.sap.log.error(
+						"The thingType has not matched with the ThingModel created in the Manifest file , hence need to create a new oData Model for this thingType"
+					);
+					break;
+				}
+			}
+
+		},
+
+		_onObjectMatched: function (oEvent) {
+			this.odataServiceIoT = new sap.ui.model.odata.ODataModel("/IOTAS-ADVANCEDLIST-THING-ODATA/CompositeThings/v1/", true);
+			this.odataServiceIoT.read("/Things", null, null, false, function (response) {
+				// console.log(response);
+				var i = 0;
+				for (i = 0; i < response.results.length; i++) {
+					if (response.results[i].ThingDescription === "IoT Thing for Customer 1000020") {
+						sap.ui.getCore().thingId1 = response.results[i].ThingId;
+						sap.ui.getCore().thing1Type = response.results[i].ThingType;
+					}
+					if (response.results[i].ThingDescription === "Model 2 thing") {
+						sap.ui.getCore().thingId2 = response.results[i].ThingId;
+						sap.ui.getCore().thing1Type = response.results[i].ThingType;
+					}
+					if (response.results[i].ThingDescription === "Model 3 Thing") {
+						sap.ui.getCore().thingId3 = response.results[i].ThingId;
+						sap.ui.getCore().thing1Type = response.results[i].ThingType;
+					}
+
+				}
+			});
+			var oRef = this;
+			sap.ui.getCore().sThingId = sap.ui.getCore().thingId2;
+			var oDetailsThingModel = oRef._findThingModel(sap.ui.getCore().thing1Type);
+			if (oDetailsThingModel) {
+				// this._readDetailsService(oDetailsThingModel, this.sThingId);
+				oRef._readDetailsService(oDetailsThingModel, sap.ui.getCore().sThingId);
+			} else {
+				var sURL = "/IOTAS-DETAILS-THING-ODATA/CompositeThings/ThingType/v1/" + sap.ui.getCore().thing1Type;
+				var oNewThingTypeModel = new sap.ui.model.odata.ODataModel(sURL);
+				// this._readDetailsService(oNewThingTypeModel, this.sThingId);
+				oRef._readDetailsService(oNewThingTypeModel, sap.ui.getCore().sThingId);
+			}
 		},
 
 		// _onRouteMatched: function () {
@@ -139,18 +347,19 @@ sap.ui.define([
 			// that.getView().byId("id3").setValue(filterConsumed);
 
 			that.getOwnerComponent().getRouter().navTo("FilterLife", {
-				FilterConsumed: that.filterConsumed,
-				filterType: that.filterType,
-				waterFiltered: that.waterFiltered
+				FilterConsumed: sap.ui.getCore().filterConsumed,
+				filterType: sap.ui.getCore().filterType,
+				waterFiltered: sap.ui.getCore().waterFiltered
 
 			});
 			//this.getOwnerComponent().getRouter().navTo("FilterLife");
 		},
 		onServiceHistoryPress: function () {
 			var that = this;
+			//that.getOwnerComponent().getRouter().navTo("ServiceHistory");
 			that.getOwnerComponent().getRouter().navTo("ServiceHistory", {
 				customerID: that.custId,
-				deviceId: that.deviceId
+				deviceId: sap.ui.getCore().deviceId
 			});
 			// var that = this;
 
@@ -165,10 +374,11 @@ sap.ui.define([
 		},
 		onServiceRequestPress: function () {
 			var that = this;
+			//this.getOwnerComponent().getRouter().navTo("ServiceRequestCreation");
 
 			this.getOwnerComponent().getRouter().navTo("ServiceRequestCreation", {
 				customerID: that.custId,
-				deviceId: that.deviceId
+				deviceId: sap.ui.getCore().deviceId
 			});
 		},
 		onPressBack: function () {
@@ -179,7 +389,7 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
 			} else {
-				this.getOwnerComponent().getRouter().navTo("Main", null, true);
+				//this.getOwnerComponent().getRouter().navTo("Main", null, true);
 			}
 
 		},

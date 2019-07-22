@@ -139,14 +139,8 @@
 				"controlId": "idAppControl"
 			},
 			"routes": [{
-				"name": "RootView",
-				"pattern": "",
-				"target": [
-					"Main"
-				]
-			}, {
 				"name": "Tile",
-				"pattern": "Tile/{deviceId}/{FaultCode}/{filterLife}/{waterConsumption}/{waterFiltered}/{mobileNum}/{filterType}",
+				"pattern": "",
 				"target": "Tile"
 			}, {
 				"name": "TDSOutput",
@@ -170,10 +164,6 @@
 				"target": "InstallationView"
 			}],
 			"targets": {
-				"Main": {
-					"viewType": "XML",
-					"viewName": "Main"
-				},
 				"Tile": {
 					"viewType": "XML",
 					"viewName": "Tile"

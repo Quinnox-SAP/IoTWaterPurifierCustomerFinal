@@ -1,31 +1,31 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.controller.InstallationView"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-	<App>
-		<pages>
-			<Page title="Welcome, {oCustomer>/Name}">
-				<headerContent>
-					<Button icon="sap-icon://log" press="onPress" type="Reject"/>
-				</headerContent>
+	<!--<App>-->
+	<!--	<pages>-->
+	<Page title="Welcome, {oCustomer>/Name}">
+		<!--<headerContent>-->
+		<!--	<Button icon="sap-icon://log" press="onPress" type="Reject"/>-->
+		<!--</headerContent>-->
+		<content>
+			<f:SimpleForm columnsL="7" columnsM="7" editable="false" emptySpanL="1" emptySpanM="1" labelSpanL="4" labelSpanM="4"
+				layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+				<f:content>
+					<Label text="Type of Service" design="Bold" required="true"></Label>
+					<Input id="issue" value="Installation Request"></Input>
+					<Label text="Comments" design="Bold" required="true"></Label>
+					<Input type="Text" id="comments"></Input>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
 				<content>
-					<f:SimpleForm columnsL="7" columnsM="7" editable="false" emptySpanL="1" emptySpanM="1" labelSpanL="4" labelSpanM="4"
-						layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
-						<f:content>
-							<Label text="Type of Service" design="Bold" required="true"></Label>
-							<Input id="issue" value="Installation Request"></Input>
-							<Label text="Comments" design="Bold" required="true"></Label>
-							<Input type="Text" id="comments"></Input>
-						</f:content>
-					</f:SimpleForm>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Save" type="Accept" press="onSubmit"></Button>
 				</content>
-				<footer>
-					<Toolbar>
-						<content>
-							<ToolbarSpacer></ToolbarSpacer>
-							<Button text="Save" type="Accept" press="onSubmit"></Button>
-						</content>
-					</Toolbar>
-				</footer>
-			</Page>
-		</pages>
-	</App>
+			</Toolbar>
+		</footer>
+	</Page>
+	<!--	</pages>-->
+	<!--</App>-->
 </mvc:View>
